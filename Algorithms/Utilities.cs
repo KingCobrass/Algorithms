@@ -1,6 +1,6 @@
-﻿namespace Algorithms.Sorting
+﻿namespace Algorithms
 {
-    public static class SortingUtilities
+    public static class Utilities
     {
         public static void Swap(int[] data, int a, int b)
         {

@@ -16,9 +16,21 @@ namespace AlgorithmTests
         }
 
         [TestMethod]
+        public void BucketSortTest()
+        {
+            SortingTests.TestSortingAlgorithm(data => BucketSort.Sort(data, SortingTests.MaxValue));
+        }
+
+        [TestMethod]
         public void CountingSortTest()
         {
             SortingTests.TestSortingAlgorithm(data => CountingSort.Sort(data, SortingTests.MaxValue));
+        }
+
+        [TestMethod]
+        public void HeapSortTest()
+        {
+            SortingTests.TestSortingAlgorithm(HeapSort.Sort);
         }
 
         [TestMethod]
@@ -39,6 +51,12 @@ namespace AlgorithmTests
             SortingTests.TestSortingAlgorithm(QuickSort.Sort);
         }
 
+        [TestMethod]
+        public void RadixSortTest()
+        {
+            SortingTests.TestSortingAlgorithm(data => RadixSort.Sort(data, SortingTests.MaxValue));
+        }
+
         private static void TestSortingAlgorithm(Action<int[]> sortingAlgorithm)
         {
             Random random = new Random();
@@ -47,10 +65,7 @@ namespace AlgorithmTests
             {
                 for(int j = 0; j < 100; j++)
                 {
-                    int[] data = new int[j];
-                    for (int k = 0; k < data.Length; k++)
-                        data[k] = random.Next(0, SortingTests.MaxValue);
-
+                    int[] data = TestUtilities.GenerateRandomArray(j, 0, SortingTests.MaxValue);
                     SortingTests.TestSortingAlgorithm(sortingAlgorithm, data);
                 }
             }

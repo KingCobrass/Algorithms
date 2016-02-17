@@ -9,7 +9,7 @@
                 for(int j = i + 1; j < data.Length; j++)
                 {
                     if (data[i] > data[j])
-                        SortingUtilities.Swap(data, i, j);
+                        Utilities.Swap(data, i, j);
                 }
             }
         }

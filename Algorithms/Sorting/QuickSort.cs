@@ -19,7 +19,7 @@
                 if(data[i] <= data[end])
                 {
                     pivot++;
-                    SortingUtilities.Swap(data, i, pivot);
+                    Utilities.Swap(data, i, pivot);
                 }
             }
 
