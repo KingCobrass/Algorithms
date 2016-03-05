@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Algorithms.DataStructures.BinarySearchTree;
 using Algorithms.Sorting;
 
 namespace AlgorithmTests
@@ -55,6 +56,25 @@ namespace AlgorithmTests
         public void RadixSortTest()
         {
             SortingTests.TestSortingAlgorithm(data => RadixSort.Sort(data, SortingTests.MaxValue));
+        }
+
+        [TestMethod]
+        public void BinaryTreeSortTest()
+        {
+            SortingTests.TestSortingAlgorithm(
+                data =>
+                {
+                    BinarySearchTree tree = new BinarySearchTree();
+                    foreach (int x in data)
+                        tree.Add(x);
+
+                    int i = 0;
+                    foreach (int x in tree.Values)
+                    {
+                        data[i] = x;
+                        i++;
+                    }
+                });
         }
 
         private static void TestSortingAlgorithm(Action<int[]> sortingAlgorithm)

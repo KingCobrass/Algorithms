@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataStructures\BinarySearchTree\BinarySearchTree.cs" />
     <Compile Include="DataStructures\Heap\Heap.cs" />
     <Compile Include="Sorting\BubbleSort.cs" />
     <Compile Include="Sorting\BucketSort.cs" />
