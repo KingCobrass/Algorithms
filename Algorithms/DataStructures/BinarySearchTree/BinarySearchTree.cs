@@ -6,9 +6,18 @@ using System.Threading.Tasks;
 
 namespace Algorithms.DataStructures.BinarySearchTree
 {
+    public class Node
+    {
+        public int Data { get; set; }
+
+        public Node Parent { get; set; }
+        public Node Left { get; set; }
+        public Node Right { get; set; }
+    }
+
     public class BinarySearchTree
     {
-        private Node Root { get; set; }
+        public Node Root { get; private set; }
 
         public IEnumerable<int> Values
         {
@@ -142,27 +151,18 @@ namespace Algorithms.DataStructures.BinarySearchTree
 
         private static Node Minimum(Node node)
         {
-            while (node.Right != null)
-                node = node.Right;
-
-            return node;
-        }
-
-        private static Node Maximum(Node node)
-        {
             while (node.Left != null)
                 node = node.Left;
 
             return node;
         }
 
-        private class Node
+        private static Node Maximum(Node node)
         {
-            public int Data { get; set; }
+            while (node.Right != null)
+                node = node.Right;
 
-            public Node Parent { get; set; }
-            public Node Left { get; set; }
-            public Node Right { get; set; }
+            return node;
         }
     }
 }
