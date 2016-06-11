@@ -54,6 +54,8 @@
   <ItemGroup>
     <Compile Include="BinarySearchTreeTests.cs" />
     <Compile Include="DynamicProgrammingTests\RodCuttingTest.cs" />
+    <Compile Include="GraphAlgorithmTests\BreadthFirstSearchTest.cs" />
+    <Compile Include="GraphAlgorithmTests\DepthFirstSearchTest.cs" />
     <Compile Include="HeapTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SortingTests.cs" />

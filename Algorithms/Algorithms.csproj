@@ -43,6 +43,9 @@
     <Compile Include="DataStructures\BinarySearchTree\BinarySearchTree.cs" />
     <Compile Include="DataStructures\Heap\Heap.cs" />
     <Compile Include="DynamicProgramming\RodCutting.cs" />
+    <Compile Include="GraphAlgorithms\BreadthFirstSearch.cs" />
+    <Compile Include="GraphAlgorithms\DepthFirstSearch.cs" />
+    <Compile Include="GraphAlgorithms\FloydWarshall.cs" />
     <Compile Include="Sorting\BubbleSort.cs" />
     <Compile Include="Sorting\BucketSort.cs" />
     <Compile Include="Sorting\CountingSort.cs" />
