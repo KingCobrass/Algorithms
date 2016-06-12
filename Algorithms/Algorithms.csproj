@@ -46,6 +46,7 @@
     <Compile Include="GraphAlgorithms\BreadthFirstSearch.cs" />
     <Compile Include="GraphAlgorithms\DepthFirstSearch.cs" />
     <Compile Include="GraphAlgorithms\FloydWarshall.cs" />
+    <Compile Include="GraphAlgorithms\Kruskal.cs" />
     <Compile Include="Sorting\BubbleSort.cs" />
     <Compile Include="Sorting\BucketSort.cs" />
     <Compile Include="Sorting\CountingSort.cs" />
