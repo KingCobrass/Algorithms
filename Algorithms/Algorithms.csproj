@@ -40,8 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataStructures\BinarySearchTree\BinarySearchTree.cs" />
-    <Compile Include="DataStructures\Heap\Heap.cs" />
+    <Compile Include="DataStructures\BinarySearchTree.cs" />
+    <Compile Include="DataStructures\Heap.cs" />
+    <Compile Include="DataStructures\PriorityQueue.cs" />
     <Compile Include="DynamicProgramming\RodCutting.cs" />
     <Compile Include="GraphAlgorithms\BreadthFirstSearch.cs" />
     <Compile Include="GraphAlgorithms\DepthFirstSearch.cs" />

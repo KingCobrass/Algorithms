@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Algorithms.DynamicProgramming;
 
-namespace AlgorithmTests
+namespace AlgorithmTests.DynamicProgrammingTests
 {
     [TestClass]
     public class RodCuttingTests

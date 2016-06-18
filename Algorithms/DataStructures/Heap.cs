@@ -1,35 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Algorithms.DataStructures.Heap
+namespace Algorithms.DataStructures
 {
     public class Heap
     {
-        public static void BuildHeap(int[] data, Func<int, int, bool> isGreater)
+        public static void BuildHeap<T>(T[] data, Comparison<T> comparison)
         {
             for (int i = data.Length / 2 - 1; i >= 0; i--)
-                Heap.Heapify(data, i, data.Length, isGreater);
+                Heap.Heapify(data, i, data.Length, comparison);
         }
 
-        public static void Heapify(int[] data, int i, int heapSize, Func<int, int, bool> isGreater)
+        public static void Heapify<T>(T[] data, int i, int heapSize, Comparison<T> comparison)
         {
             int greatest = i;
 
             int left = Heap.Left(i);
             int right = Heap.Right(i);
 
-            if (left < heapSize && isGreater(data[left], data[greatest]))
+            if (left < heapSize && comparison(data[left], data[greatest]) >= 0)
                 greatest = left;
-            if (right < heapSize && isGreater(data[right], data[greatest]))
+            if (right < heapSize && comparison(data[right], data[greatest]) >= 0)
                 greatest = right;
 
             if(greatest != i)
             {
                 Utilities.Swap(data, greatest, i);
-                Heap.Heapify(data, greatest, heapSize, isGreater);
+                Heap.Heapify(data, greatest, heapSize, comparison);
             }
         }
 

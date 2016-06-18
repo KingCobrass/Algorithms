@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Algorithms.DataStructures.BinarySearchTree;
+using Algorithms.DataStructures;
 using Algorithms.Sorting;
 
-namespace AlgorithmTests
+namespace AlgorithmTests.SortingTests
 {
     [TestClass]
     public class SortingTests

@@ -1,5 +1,5 @@
 ﻿using System;
-using Algorithms.DataStructures.Heap;
+using Algorithms.DataStructures;
 
 namespace Algorithms.Sorting
 {
@@ -8,15 +8,15 @@ namespace Algorithms.Sorting
         public static void Sort(int[] data)
         {
             int heapSize = data.Length;
-            Func<int, int, bool> isGreater = (x, y) => x > y;
+            Comparison<int> comparison = (x, y) => x.CompareTo(y);
 
-            Heap.BuildHeap(data, isGreater);
+            Heap.BuildHeap(data, comparison);
 
             for (int i = data.Length - 1; i >= 0; i--)
             {
                 Utilities.Swap(data, 0, i);
                 heapSize--;
-                Heap.Heapify(data, 0, heapSize, isGreater);
+                Heap.Heapify(data, 0, heapSize, comparison);
             }
         }
     }

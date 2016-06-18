@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Algorithms.DataStructures.BinarySearchTree;
+using Algorithms.DataStructures;
 
-namespace AlgorithmTests
+namespace AlgorithmTests.DataStructureTests
 {
     [TestClass]
     public class BinarySearchTreeTests
