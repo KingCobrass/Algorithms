@@ -44,10 +44,12 @@ namespace Algorithms.GraphAlgorithms
                     results[from, to] = edge.Weight;
                     results[to, from] = edge.Weight;
 
-                    foreach(int i in sets[to])
+                    foreach (int i in sets[to])
+                    {
                         sets[from].Add(i);
+                        sets[i] = sets[from];
+                    }
 
-                    sets[to] = sets[from];
                 }
             }
 
@@ -61,7 +63,7 @@ namespace Algorithms.GraphAlgorithms
                 for (int j = i; j < n; j++)
                 {
                     int weight = graph[i, j];
-                    if (weight < int.MaxValue)
+                    if (weight != 0 && weight != int.MaxValue)
                         yield return new Edge { From = i, To = j, Weight = weight };
                 }
             }

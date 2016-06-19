@@ -11,7 +11,7 @@ namespace AlgorithmTests.DataStructureTests
         public void HeapTest()
         {
             Comparison<int> comparison = (x, y) => x.CompareTo(y);
-            for(int i = 0; i < 10; i++)
+            for(int i = 0; i < 100; i++)
             {
                 for(int j = 0; j < 100; j++)
                 {
@@ -24,9 +24,9 @@ namespace AlgorithmTests.DataStructureTests
                         int right = Heap.Right(k);
                         int parent = Heap.Parent(k);
 
-                        Assert.IsTrue(k == 0 || comparison(data[k], data[parent]) < 0);
-                        Assert.IsTrue(left >= data.Length || comparison(data[left], data[k]) < 0);
-                        Assert.IsTrue(right >= data.Length || comparison(data[left], data[k]) < 0);
+                        Assert.IsTrue(k == 0 || comparison(data[k], data[parent]) <= 0);
+                        Assert.IsTrue(left >= data.Length || comparison(data[left], data[k]) <= 0);
+                        Assert.IsTrue(right >= data.Length || comparison(data[left], data[k]) <= 0);
                     }
                 }
             }

@@ -11,15 +11,27 @@ namespace AlgorithmTests.GraphAlgorithmTests
         [TestMethod]
         public void MinimumSpanningTreeTest()
         {
-            int n = 10;
-            int[,] graph = MinimumSpanningTreeTestClass.CreateSpanningTree(n);
-            int[,] minimimSpanningTree = Kruskal.Run(graph);
+            for(int i = 0; i < 10; i++)
+            {
+                for(int n = 1; n <= 10; n++)
+                {
+                    int[,] graph = MinimumSpanningTreeTestClass.CreateSpanningTree(n);
+                    int[,] minimimSpanningTreeKruskal = Kruskal.Run(graph);
+                    int[,] minimumSpanningTreePrim = Prim.Run(graph);
+
+                    int kruskalLength = MinimumSpanningTreeTestClass.Length(minimimSpanningTreeKruskal, n);
+                    int primLength = MinimumSpanningTreeTestClass.Length(minimumSpanningTreePrim, n);
+
+                    Assert.AreEqual(kruskalLength, primLength);
+                }
+            }
         }
 
         private static int[,] CreateSpanningTree(int n)
         {
             int[,] graph = new int[n, n];
-            for(int i = 0; i < n; i++)
+
+            for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < n; j++)
                     graph[i, j] = (i == j) ? 0 : int.MaxValue;
@@ -73,6 +85,23 @@ namespace AlgorithmTests.GraphAlgorithmTests
 
             bool[] visited = DepthFirstSearch.Run(paths, 0);
             return visited.All(b => b);
+        }
+
+        private static int Length(int[,] spanningTree, int n)
+        {
+            int length = 0;
+
+            for(int i = 0; i < n; i++)
+            {
+                for (int j = i + 1; j < n; j++)
+                {
+                    int weight = spanningTree[i, j];
+                    if(weight != int.MaxValue)
+                        length += weight;
+                }
+            }
+
+            return length;
         }
     }
 }
