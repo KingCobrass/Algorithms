@@ -23,8 +23,6 @@ namespace Algorithms.GraphAlgorithms
             }
 
             int[] parents = new int[n];
-            for(int i = 1; i < n; i++)
-                parents[i] = -1;
 
             int[] priorities = new int[n];
             for (int i = 1; i < priorities.Length; i++)
