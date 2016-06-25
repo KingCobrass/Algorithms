@@ -55,6 +55,7 @@
     <Compile Include="DataStructureTests\BinarySearchTreeTests.cs" />
     <Compile Include="DataStructureTests\PriorityQueueTests.cs" />
     <Compile Include="DynamicProgrammingTests\RodCuttingTest.cs" />
+    <Compile Include="GraphAlgorithmTests\AllPairsShortestPathTest.cs" />
     <Compile Include="GraphAlgorithmTests\BreadthFirstSearchTest.cs" />
     <Compile Include="GraphAlgorithmTests\DepthFirstSearchTest.cs" />
     <Compile Include="GraphAlgorithmTests\MinimumSpanningTreeTest.cs" />
