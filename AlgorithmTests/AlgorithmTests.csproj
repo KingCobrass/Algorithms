@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="DataStructureTests\BinarySearchTreeTests.cs" />
     <Compile Include="DataStructureTests\PriorityQueueTests.cs" />
+    <Compile Include="DynamicProgrammingTests\LongestCommonSubsequenceTest.cs" />
     <Compile Include="DynamicProgrammingTests\RodCuttingTest.cs" />
     <Compile Include="GraphAlgorithmTests\AllPairsShortestPathTest.cs" />
     <Compile Include="GraphAlgorithmTests\BreadthFirstSearchTest.cs" />
