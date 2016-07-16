@@ -44,6 +44,7 @@
     <Compile Include="DataStructures\Heap.cs" />
     <Compile Include="DataStructures\PriorityQueue.cs" />
     <Compile Include="DynamicProgramming\LongestCommonSubsequence.cs" />
+    <Compile Include="DynamicProgramming\MatrixMultiplication.cs" />
     <Compile Include="DynamicProgramming\RodCutting.cs" />
     <Compile Include="GraphAlgorithms\BellmanFord.cs" />
     <Compile Include="GraphAlgorithms\BreadthFirstSearch.cs" />
