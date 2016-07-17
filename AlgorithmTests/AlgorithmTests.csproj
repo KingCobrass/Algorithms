@@ -63,6 +63,7 @@
     <Compile Include="GraphAlgorithmTests\MinimumSpanningTreeTest.cs" />
     <Compile Include="DataStructureTests\HeapTests.cs" />
     <Compile Include="GraphAlgorithmTests\SingleSourceShortestPathTest.cs" />
+    <Compile Include="GraphAlgorithmTests\TopologicalSortTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SortingTests\SortingTests.cs" />
     <Compile Include="TestUtilities.cs" />

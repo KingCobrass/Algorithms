@@ -53,6 +53,7 @@
     <Compile Include="GraphAlgorithms\FloydWarshall.cs" />
     <Compile Include="GraphAlgorithms\Kruskal.cs" />
     <Compile Include="GraphAlgorithms\Prim.cs" />
+    <Compile Include="GraphAlgorithms\TopologicalSort.cs" />
     <Compile Include="Sorting\BubbleSort.cs" />
     <Compile Include="Sorting\BucketSort.cs" />
     <Compile Include="Sorting\CountingSort.cs" />
