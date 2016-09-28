@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Algorithms.DataStructures;
 using Algorithms.Sorting;
+using Utilities;
 
 namespace AlgorithmTests.SortingTests
 {
@@ -79,13 +80,13 @@ namespace AlgorithmTests.SortingTests
 
         private static void TestSortingAlgorithm(Action<int[]> sortingAlgorithm)
         {
-            Random random = new Random();
+            System.Random random = new System.Random();
 
             for (int i = 0; i < 10; i++)
             {
                 for(int j = 0; j < 100; j++)
                 {
-                    int[] data = TestUtilities.GenerateRandomArray(j, 0, SortingTests.MaxValue);
+                    int[] data = Utilities.RandomArray.Generate(j, 0, SortingTests.MaxValue);
                     SortingTests.TestSortingAlgorithm(sortingAlgorithm, data);
                 }
             }

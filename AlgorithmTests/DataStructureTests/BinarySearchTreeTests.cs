@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Algorithms.DataStructures;
+using Utilities;
 
 namespace AlgorithmTests.DataStructureTests
 {
@@ -18,7 +19,7 @@ namespace AlgorithmTests.DataStructureTests
                 for(int j = 0; j < 100; j++)
                 {
                     BinarySearchTree tree = new BinarySearchTree();
-                    int[] data = TestUtilities.GenerateRandomArray(j, 0, BinarySearchTreeTests.MaxValue);
+                    int[] data = Utilities.RandomArray.Generate(j, 0, BinarySearchTreeTests.MaxValue);
 
                     for (int k = 0; k < data.Length; k++)
                     {
@@ -37,7 +38,7 @@ namespace AlgorithmTests.DataStructureTests
                 for (int j = 0; j < 100; j++)
                 {
                     BinarySearchTree tree = new BinarySearchTree();
-                    int[] data = TestUtilities.GenerateRandomArray(j, 0, BinarySearchTreeTests.MaxValue);
+                    int[] data = Utilities.RandomArray.Generate(j, 0, BinarySearchTreeTests.MaxValue);
 
                     for (int k = 0; k < data.Length; k++)
                         tree.Add(data[k]);
@@ -45,7 +46,7 @@ namespace AlgorithmTests.DataStructureTests
                     BinarySearchTreeTests.ValidateTree(tree, data, data.Length);
 
                     List<int> list = new List<int>(data);
-                    Random random = new Random();
+                    System.Random random = new System.Random();
                     List<int> removed = new List<int>();
 
                     while(list.Count > 0)

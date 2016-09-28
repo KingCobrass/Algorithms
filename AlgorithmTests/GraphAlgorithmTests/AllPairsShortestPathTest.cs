@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Algorithms.GraphAlgorithms;
+using Utilities;
 
 namespace AlgorithmTests.GraphAlgorithmTests
 {
@@ -30,7 +31,7 @@ namespace AlgorithmTests.GraphAlgorithmTests
                         Assert.AreEqual(floydWarshall[j, k], djikstra[k]);
                 }
 
-                TestUtilities.SetRandomEdge(graph, n);
+                Graphs.SetRandomEdge(graph, n);
             }
         }
     }

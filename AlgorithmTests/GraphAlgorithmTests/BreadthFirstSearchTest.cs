@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Algorithms.GraphAlgorithms;
+using Utilities;
 
 namespace AlgorithmTests.GraphAlgorithmTests
 {
@@ -23,7 +24,7 @@ namespace AlgorithmTests.GraphAlgorithmTests
                         Assert.AreEqual(allPaths[j, k], depths[k]);
                 }
 
-                TestUtilities.SetRandomEdge(graph, n);
+                Graphs.SetRandomEdge(graph, n);
             }
         }
 

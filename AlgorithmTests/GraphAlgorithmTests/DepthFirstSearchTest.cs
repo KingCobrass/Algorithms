@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Algorithms.GraphAlgorithms;
+using Utilities;
 
 namespace AlgorithmTests.GraphAlgorithmTests
 {
@@ -25,7 +26,7 @@ namespace AlgorithmTests.GraphAlgorithmTests
                         Assert.AreEqual(expected[k], actual[k]);
                 }
 
-                TestUtilities.SetRandomEdge(graph, n);
+                Graphs.SetRandomEdge(graph, n);
             }
         }
 

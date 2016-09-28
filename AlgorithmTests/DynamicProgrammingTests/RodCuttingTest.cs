@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Algorithms.DynamicProgramming;
+using Utilities;
 
 namespace AlgorithmTests.DynamicProgrammingTests
 {
@@ -16,7 +17,7 @@ namespace AlgorithmTests.DynamicProgrammingTests
             {
                 for(int j = 1; j < 10; j++)
                 {
-                    int[] data = TestUtilities.GenerateRandomArray(j, 1, 10);
+                    int[] data = Utilities.RandomArray.Generate(j, 1, 10);
                     int[] prices = new int[data.Length + 1];
                     for (int k = 0; k < data.Length; k++)
                         prices[k + 1] = prices[k] + data[k];

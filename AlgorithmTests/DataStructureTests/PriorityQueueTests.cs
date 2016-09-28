@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Algorithms.DataStructures;
+using Utilities;
 
 namespace AlgorithmTests.PriorityQueueTests
 {
@@ -16,7 +16,7 @@ namespace AlgorithmTests.PriorityQueueTests
             {
                 for (int j = 1; j < 100; j++)
                 {
-                    int[] data = TestUtilities.GenerateRandomArray(j, 0, 1000);
+                    int[] data = Utilities.RandomArray.Generate(j, 0, 1000);
                     PriorityQueue<int> queue = new PriorityQueue<int>(j, (x, y) => x.CompareTo(y));
 
                     for(int k = 0; k < data.Length; k++)

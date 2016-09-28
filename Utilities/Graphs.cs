@@ -1,23 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AlgorithmTests
+﻿namespace Utilities
 {
-    public static class TestUtilities
+    public static class Graphs
     {
-        public static int[] GenerateRandomArray(int length, int minValue, int maxValue)
-        {
-            Random random = new Random();
-            int[] data = new int[length];
-            for (int k = 0; k < data.Length; k++)
-                data[k] = random.Next(minValue, maxValue);
-
-            return data;
-        }
-
         public static void SetRandomEdge(bool[,] graph, int n)
         {
             bool found = false;
@@ -25,7 +9,7 @@ namespace AlgorithmTests
             int j = 0;
 
             int count = 0;
-            Random random = new Random();
+            System.Random random = new System.Random();
 
             for (int k = 0; k < n; k++)
             {
@@ -56,7 +40,7 @@ namespace AlgorithmTests
             int j = 0;
 
             int count = 0;
-            Random random = new Random();
+            System.Random random = new System.Random();
 
             for (int k = 0; k < n; k++)
             {

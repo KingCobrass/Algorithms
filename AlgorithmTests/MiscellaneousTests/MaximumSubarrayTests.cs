@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Algorithms.Miscellaneous;
+using Utilities;
 
 namespace AlgorithmTests.MiscellaneousTests
 {
@@ -14,7 +15,7 @@ namespace AlgorithmTests.MiscellaneousTests
             {
                 for(int j = 0; j < 10; j++)
                 {
-                    int[] data = TestUtilities.GenerateRandomArray(j, -20, 20);
+                    int[] data = Utilities.RandomArray.Generate(j, -20, 20);
 
                     int expected = MaximumSubarrayTests.CalculateMaximumSubarray(data);
                     int actual = MaximumSubarray.Run(data);

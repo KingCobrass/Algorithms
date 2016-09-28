@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Algorithms.DataStructures;
+using Utilities;
 
 namespace AlgorithmTests.DataStructureTests
 {
@@ -15,7 +16,7 @@ namespace AlgorithmTests.DataStructureTests
             {
                 for(int j = 0; j < 100; j++)
                 {
-                    int[] data = TestUtilities.GenerateRandomArray(j, 0, 1000);
+                    int[] data = Utilities.RandomArray.Generate(j, 0, 1000);
                     Heap.BuildHeap(data, comparison);
 
                     for(int k = 0; k < data.Length; k++)
