@@ -23,30 +23,9 @@ namespace Problems.PrimitiveTypes
 
             Tests.TestFunctions(int.MaxValue, functions);
 
-            Parity.ParityTest(int.MaxValue);
-
             System.Random random = new System.Random();
             for (int i = 0; i < 100; i++)
                 Tests.TestFunctions(random.Next(0, int.MaxValue), functions);
-        }
-
-        private static void ParityTest(int x)
-        {
-            Func<int, bool>[] functions = new Func<int, bool>[]
-            {
-                Parity.BruteForce,
-                Parity.Bits,
-                Parity.Cache,
-                Parity.Shift
-            };
-
-            bool[] results = new bool[functions.Length];
-
-            for(int i = 0; i < results.Length; i++)
-            {
-                results[i] = functions[i](x);
-                Assert.AreEqual(results[0], results[i]);
-            }
         }
 
         private static bool BruteForce(int x)
