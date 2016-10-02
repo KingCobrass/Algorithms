@@ -86,7 +86,7 @@ namespace AlgorithmTests.SortingTests
             {
                 for(int j = 0; j < 100; j++)
                 {
-                    int[] data = Utilities.RandomArray.Generate(j, 0, SortingTests.MaxValue);
+                    int[] data = Utilities.ArrayUtilities.CreateRandomArray(j, 0, SortingTests.MaxValue);
                     SortingTests.TestSortingAlgorithm(sortingAlgorithm, data);
                 }
             }

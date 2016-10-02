@@ -19,7 +19,7 @@ namespace AlgorithmTests.DataStructureTests
                 for(int j = 0; j < 100; j++)
                 {
                     BinarySearchTree tree = new BinarySearchTree();
-                    int[] data = Utilities.RandomArray.Generate(j, 0, BinarySearchTreeTests.MaxValue);
+                    int[] data = Utilities.ArrayUtilities.CreateRandomArray(j, 0, BinarySearchTreeTests.MaxValue);
 
                     for (int k = 0; k < data.Length; k++)
                     {
@@ -38,7 +38,7 @@ namespace AlgorithmTests.DataStructureTests
                 for (int j = 0; j < 100; j++)
                 {
                     BinarySearchTree tree = new BinarySearchTree();
-                    int[] data = Utilities.RandomArray.Generate(j, 0, BinarySearchTreeTests.MaxValue);
+                    int[] data = Utilities.ArrayUtilities.CreateRandomArray(j, 0, BinarySearchTreeTests.MaxValue);
 
                     for (int k = 0; k < data.Length; k++)
                         tree.Add(data[k]);

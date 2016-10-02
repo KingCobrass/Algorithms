@@ -12,7 +12,7 @@ namespace Problems.Arrays
         {
             for (int i = 0; i < 10; i++)
             {
-                int[] prices = RandomArray.Generate(30, 1, 100);
+                int[] prices = ArrayUtilities.CreateRandomArray(30, 1, 100);
                 Tests.TestFunctions(prices, BuySellOnce.BruteForce, BuySellOnce.SinglePass);
             }
         }

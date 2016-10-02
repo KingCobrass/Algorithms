@@ -15,7 +15,7 @@ namespace AlgorithmTests.MiscellaneousTests
             {
                 for(int j = 0; j < 10; j++)
                 {
-                    int[] data = Utilities.RandomArray.Generate(j, -20, 20);
+                    int[] data = Utilities.ArrayUtilities.CreateRandomArray(j, -20, 20);
 
                     int expected = MaximumSubarrayTests.CalculateMaximumSubarray(data);
                     int actual = MaximumSubarray.Run(data);
