@@ -120,19 +120,22 @@ namespace Problems.Arrays
             bool pivotFound = false;
             bool pivotPassed = false;
 
-            for(int i = 0; i < data.Length; i++)
+            foreach(int i in data)
             {
-                if (data[i] == pivot)
+                if(i < pivot)
+                {
+                    Assert.IsFalse(pivotFound);
+                }
+                else if (i == pivot)
+                {
+                    Assert.IsFalse(pivotPassed);
                     pivotFound = true;
-                else if (data[i] > pivot)
-                    pivotPassed = true;
-
-                if (!pivotFound)
-                    Assert.IsTrue(data[i] < pivot);
-                else if (pivotPassed)
-                    Assert.IsTrue(data[i] > pivot);
+                }
                 else
-                    Assert.AreEqual(data[i], pivot);
+                {
+                    Assert.IsTrue(pivotFound);
+                    pivotPassed = true;
+                }
             }
         }
     }
