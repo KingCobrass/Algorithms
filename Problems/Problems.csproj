@@ -53,6 +53,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Arrays\BuySellOnce.cs" />
+    <Compile Include="PrimitiveTypes\AddWithoutPlus.cs" />
     <Compile Include="PrimitiveTypes\Multiply.cs" />
     <Compile Include="PrimitiveTypes\Closest.cs" />
     <Compile Include="PrimitiveTypes\Parity.cs" />
