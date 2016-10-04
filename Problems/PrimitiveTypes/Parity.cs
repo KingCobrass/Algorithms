@@ -48,7 +48,7 @@ namespace Problems.PrimitiveTypes
             while (x != 0)
             {
                 parity = !parity;
-                x = x & (x - 1);
+                x &= (x - 1);
             }
 
             return parity;

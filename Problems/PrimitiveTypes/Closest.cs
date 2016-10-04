@@ -32,10 +32,10 @@ namespace Problems.PrimitiveTypes
         private static int DigitCount(int x)
         {
             int count = 0;
-            for (int i = 0; i < 32; i++)
+            while(x > 0)
             {
-                if (((1 << i) & x) != 0)
-                    count++;
+                x &= (x - 1);
+                count++;
             }
 
             return count;
