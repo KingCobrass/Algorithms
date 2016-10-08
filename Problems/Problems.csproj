@@ -55,6 +55,7 @@
     <Compile Include="Arrays\BuySellOnce.cs" />
     <Compile Include="Arrays\DutchNationalFlag.cs" />
     <Compile Include="Arrays\IncrementInteger.cs" />
+    <Compile Include="LinkedLists\MergeTwoSortedLists.cs" />
     <Compile Include="PrimitiveTypes\AddWithoutPlus.cs" />
     <Compile Include="PrimitiveTypes\Multiply.cs" />
     <Compile Include="PrimitiveTypes\Closest.cs" />
@@ -65,6 +66,10 @@
     <Compile Include="Strings\InterconvertStringsAndInts.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Algorithms\Algorithms.csproj">
+      <Project>{8eb9ed76-3d70-4a6c-afac-de2c0f054c3d}</Project>
+      <Name>Algorithms</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Utilities\Utilities.csproj">
       <Project>{4a91452e-6aca-4a11-a0c9-1c4d4c4beea1}</Project>
       <Name>Utilities</Name>

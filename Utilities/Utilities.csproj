@@ -46,8 +46,15 @@
   <ItemGroup>
     <Compile Include="ArrayUtilities.cs" />
     <Compile Include="Graphs.cs" />
+    <Compile Include="LinkedListUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Algorithms\Algorithms.csproj">
+      <Project>{8eb9ed76-3d70-4a6c-afac-de2c0f054c3d}</Project>
+      <Name>Algorithms</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
