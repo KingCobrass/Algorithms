@@ -6,18 +6,9 @@ using System.Threading.Tasks;
 
 namespace Algorithms.DataStructures
 {
-    public class Node
-    {
-        public int Data { get; set; }
-
-        public Node Parent { get; set; }
-        public Node Left { get; set; }
-        public Node Right { get; set; }
-    }
-
     public class BinarySearchTree
     {
-        public Node Root { get; private set; }
+        public BinaryTreeNode<int> Root { get; private set; }
 
         public IEnumerable<int> Values
         {
@@ -30,10 +21,10 @@ namespace Algorithms.DataStructures
 
         public void Add(int data)
         {
-            Node node = new Node { Data = data };
+            BinaryTreeNode<int> node = new BinaryTreeNode<int> { Data = data };
 
-            Node previous = null;
-            Node current = this.Root;
+            BinaryTreeNode<int> previous = null;
+            BinaryTreeNode<int> current = this.Root;
 
             while (current != null)
             {
@@ -61,7 +52,7 @@ namespace Algorithms.DataStructures
 
         public void Delete(int data)
         {
-            Node node = BinarySearchTree.Find(data, this.Root);
+            BinaryTreeNode<int> node = BinarySearchTree.Find(data, this.Root);
 
             if (node == null)
                 return;
@@ -72,7 +63,7 @@ namespace Algorithms.DataStructures
                 this.Transplant(node, node.Left);
             else
             {
-                Node successor = BinarySearchTree.Successor(node);
+                BinaryTreeNode<int> successor = BinarySearchTree.Successor(node);
 
                 if (successor != node.Right)
                 {
@@ -87,7 +78,7 @@ namespace Algorithms.DataStructures
             }
         }
 
-        private static Node Find(int data, Node node)
+        private static BinaryTreeNode<int> Find(int data, BinaryTreeNode<int> node)
         {
             while (node != null)
             {
@@ -100,7 +91,7 @@ namespace Algorithms.DataStructures
             return null;
         }
 
-        private static IEnumerable<int> InOrderTraversal(Node node)
+        private static IEnumerable<int> InOrderTraversal(BinaryTreeNode<int> node)
         {
             if (node == null)
                 yield break;
@@ -114,7 +105,7 @@ namespace Algorithms.DataStructures
                 yield return x;
         }
 
-        private void Transplant(Node a, Node b)
+        private void Transplant(BinaryTreeNode<int> a, BinaryTreeNode<int> b)
         {
             if (a.Parent == null)
                 this.Root = b;
@@ -127,7 +118,7 @@ namespace Algorithms.DataStructures
                 b.Parent = a.Parent;
         }
 
-        private static Node Predecessor(Node node)
+        private static BinaryTreeNode<int> Predecessor(BinaryTreeNode<int> node)
         {
             if (node.Left != null)
                 return BinarySearchTree.Maximum(node.Left);
@@ -138,7 +129,7 @@ namespace Algorithms.DataStructures
             return node.Parent;
         }
 
-        private static Node Successor(Node node)
+        private static BinaryTreeNode<int> Successor(BinaryTreeNode<int> node)
         {
             if (node.Right != null)
                 return BinarySearchTree.Minimum(node.Right);
@@ -149,7 +140,7 @@ namespace Algorithms.DataStructures
             return node.Parent;
         }
 
-        private static Node Minimum(Node node)
+        private static BinaryTreeNode<int> Minimum(BinaryTreeNode<int> node)
         {
             while (node.Left != null)
                 node = node.Left;
@@ -157,7 +148,7 @@ namespace Algorithms.DataStructures
             return node;
         }
 
-        private static Node Maximum(Node node)
+        private static BinaryTreeNode<int> Maximum(BinaryTreeNode<int> node)
         {
             while (node.Right != null)
                 node = node.Right;

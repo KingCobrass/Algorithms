@@ -83,7 +83,7 @@ namespace AlgorithmTests.DataStructureTests
             Assert.AreEqual(l, count);
         }
 
-        private static void ValidateNode(Node node, int min = int.MinValue, int max = int.MaxValue)
+        private static void ValidateNode(BinaryTreeNode<int> node, int min = int.MinValue, int max = int.MaxValue)
         {
             if (node == null)
                 return;
