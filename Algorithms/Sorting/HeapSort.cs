@@ -16,7 +16,7 @@ namespace Algorithms.Sorting
             {
                 Utilities.Swap(data, 0, i);
                 heapSize--;
-                Heap.Heapify(data, 0, heapSize, comparison);
+                Heap.Heapify(j => data[j], (j, item) => { data[j] = item; }, 0, heapSize, comparison);
             }
         }
     }

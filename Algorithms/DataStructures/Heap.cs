@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Algorithms.DataStructures
 {
@@ -7,25 +8,33 @@ namespace Algorithms.DataStructures
         public static void BuildHeap<T>(T[] data, Comparison<T> comparison)
         {
             for (int i = data.Length / 2 - 1; i >= 0; i--)
-                Heap.Heapify(data, i, data.Length, comparison);
+                Heap.Heapify(j => data[j], (j, item) => { data[j] = item; }, i, data.Length, comparison);
         }
 
-        public static void Heapify<T>(T[] data, int i, int heapSize, Comparison<T> comparison)
+        public static void Heapify<T>(Func<int, T> get, Action<int, T> set, int i, int count, Comparison<T> comparison)
         {
-            int greatest = i;
+            int highest = i;
 
-            int left = Heap.Left(i);
-            int right = Heap.Right(i);
-
-            if (left < heapSize && comparison(data[left], data[greatest]) >= 0)
-                greatest = left;
-            if (right < heapSize && comparison(data[right], data[greatest]) >= 0)
-                greatest = right;
-
-            if(greatest != i)
+            while(true)
             {
-                Utilities.Swap(data, greatest, i);
-                Heap.Heapify(data, greatest, heapSize, comparison);
+                int left = Heap.Left(i);
+
+                if (left < count && comparison(get(left), get(highest)) > 0)
+                    highest = left;
+
+                int right = Heap.Right(i);
+
+                if (right < count && comparison(get(right), get(highest)) > 0)
+                    highest = right;
+
+                if (i == highest)
+                    return;
+
+                T temp = get(highest);
+                set(highest, get(i));
+                set(i, temp);
+
+                i = highest;
             }
         }
 

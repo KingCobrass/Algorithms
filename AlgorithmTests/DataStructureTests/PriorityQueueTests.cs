@@ -17,11 +17,11 @@ namespace AlgorithmTests.PriorityQueueTests
                 for (int j = 1; j < 100; j++)
                 {
                     int[] data = Utilities.ArrayUtilities.CreateRandomArray(j, 0, 1000);
-                    PriorityQueue<int> queue = new PriorityQueue<int>(j, (x, y) => x.CompareTo(y));
+                    MaxPriorityQueue<int> queue = new MaxPriorityQueue<int>();
 
                     for(int k = 0; k < data.Length; k++)
                     {
-                        queue.Insert(data[k], data[k]);
+                        queue.Insert(data[k]);
                         Assert.AreEqual(k + 1, queue.Count);
                     }
 

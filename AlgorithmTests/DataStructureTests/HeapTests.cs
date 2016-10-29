@@ -16,7 +16,7 @@ namespace AlgorithmTests.DataStructureTests
             {
                 for(int j = 0; j < 100; j++)
                 {
-                    int[] data = Utilities.ArrayUtilities.CreateRandomArray(j, 0, 1000);
+                    int[] data = ArrayUtilities.CreateRandomArray(j, 0, 1000);
                     Heap.BuildHeap(data, comparison);
 
                     for(int k = 0; k < data.Length; k++)

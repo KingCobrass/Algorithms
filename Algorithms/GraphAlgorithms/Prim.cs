@@ -30,12 +30,13 @@ namespace Algorithms.GraphAlgorithms
 
             bool[] visited = new bool[n];
 
-            PriorityQueue<int> queue = new PriorityQueue<int>(n * n, (x, y) => y.CompareTo(x));
-            queue.Insert(0, 0);
+            MinPriorityQueue<Node> queue = new MinPriorityQueue<Node>();
+            queue.Insert(new Node { Index = 0, Priority = 0 });
 
             while(!queue.IsEmpty)
             {
-                int current = queue.Pop();
+                Node node = queue.Pop();
+                int current = node.Index;
                 if (visited[current])
                     continue;
 
@@ -58,11 +59,22 @@ namespace Algorithms.GraphAlgorithms
                         parents[i] = current;
                     }
 
-                    queue.Insert(i, priorities[i]);
+                    queue.Insert(new Node { Index = i, Priority = priorities[i] });
                 }
             }
 
             return results;
+        }
+
+        private class Node : IComparable<Node>
+        {
+            public int Index { get; set; }
+            public int Priority { get; set; }
+
+            public int CompareTo(Node other)
+            {
+                return this.Priority.CompareTo(other.Priority);
+            }
         }
     }
 }

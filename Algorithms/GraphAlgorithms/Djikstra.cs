@@ -19,14 +19,15 @@ namespace Algorithms.GraphAlgorithms
                 depths[i] = int.MaxValue;
 
             depths[start] = 0;
-            PriorityQueue<int> queue = new PriorityQueue<int>(n * n, (x, y) => y.CompareTo(x));
-                queue.Insert(start, 0);
+            MinPriorityQueue<Node> queue = new MinPriorityQueue<Node>();
+                queue.Insert(new Node { Index = start, Depth = 0 });
 
             bool[] visited = new bool[n];
 
             while(!queue.IsEmpty)
             {
-                int current = queue.Pop();
+                Node node = queue.Pop();
+                int current = node.Index;
 
                 if (visited[current])
                     continue;
@@ -44,12 +45,23 @@ namespace Algorithms.GraphAlgorithms
                     if(depths[i] > depth)
                     {
                         depths[i] = depth;
-                        queue.Insert(i, depth);
+                        queue.Insert(new Node { Index = i, Depth = depth });
                     }
                 }
             }
 
             return depths;
+        }
+
+        private class Node : IComparable<Node>
+        {
+            public int Index { get; set; }
+            public int Depth { get; set; }
+
+            public int CompareTo(Node other)
+            {
+                return this.Depth.CompareTo(other.Depth);
+            }
         }
     }
 }
