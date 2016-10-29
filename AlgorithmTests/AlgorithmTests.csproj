@@ -68,6 +68,7 @@
     <Compile Include="MathematicalTests\EuclidGCDTests.cs" />
     <Compile Include="MiscellaneousTests\MaximumSubarrayTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchTests\BinarySearchTests.cs" />
     <Compile Include="SortingTests\SortingTests.cs" />
   </ItemGroup>
   <ItemGroup>

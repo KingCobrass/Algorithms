@@ -59,6 +59,7 @@
     <Compile Include="GraphAlgorithms\TopologicalSort.cs" />
     <Compile Include="Mathematical\EuclidGCD.cs" />
     <Compile Include="Miscellaneous\MaximumSubarray.cs" />
+    <Compile Include="Search\BinarySearch.cs" />
     <Compile Include="Sorting\BubbleSort.cs" />
     <Compile Include="Sorting\BucketSort.cs" />
     <Compile Include="Sorting\CountingSort.cs" />
