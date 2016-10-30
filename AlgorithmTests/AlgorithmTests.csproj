@@ -53,6 +53,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="DataStructureTests\BinarySearchTreeTests.cs" />
+    <Compile Include="DataStructureTests\HashTableTests.cs" />
     <Compile Include="DataStructureTests\PriorityQueueTests.cs" />
     <Compile Include="DataStructureTests\StackTests.cs" />
     <Compile Include="DynamicProgrammingTests\LongestCommonSubsequenceTest.cs" />
