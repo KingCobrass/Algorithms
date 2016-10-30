@@ -8,7 +8,7 @@ namespace Problems.Arrays
     public class IncrementInteger
     {
         [TestMethod]
-        public void TestIncrementInteger()
+        public void IncrementIntegerTest()
         {
             Action<List<int>>[] actions = new Action<List<int>>[]
             {

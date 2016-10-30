@@ -9,7 +9,7 @@ namespace Problems.Strings
     public class InterconvertStringsAndInts
     {
         [TestMethod]
-        public void TestInterconvertStringsAndInts()
+        public void InterconvertStringsAndIntsTest()
         {
             Func<int, string>[] toStringFuncs = new Func<int, string>[]
             {

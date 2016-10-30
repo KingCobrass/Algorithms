@@ -8,7 +8,7 @@ namespace AlgorithmTests.MathematicalTests
     public class EuclidGCDTests
     {
         [TestMethod]
-        public void TestGCD()
+        public void GCDTest()
         {
             for(int a = 0; a < 100; a++)
             {

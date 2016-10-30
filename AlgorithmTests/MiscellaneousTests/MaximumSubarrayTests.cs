@@ -9,7 +9,7 @@ namespace AlgorithmTests.MiscellaneousTests
     public class MaximumSubarrayTests
     {
         [TestMethod]
-        public void TestMaximumSubarray()
+        public void MaximumSubarrayTest()
         {
             for(int i = 0; i < 10; i++)
             {
