@@ -1,4 +1,6 @@
-﻿namespace Utilities
+﻿using System;
+
+namespace Utilities
 {
     public static class ArrayUtilities
     {
@@ -11,7 +13,7 @@
 
         public static int[] CreateRandomArray(int length, int minValue, int maxValue)
         {
-            System.Random random = new System.Random();
+            Random random = new Random();
             int[] data = new int[length];
             for (int k = 0; k < data.Length; k++)
                 data[k] = random.Next(minValue, maxValue);

@@ -54,6 +54,22 @@ namespace Algorithms.DataStructures
             }
         }
 
+        public IEnumerable<V> Values
+        {
+            get
+            {
+                for(int i = 0; i < this.data.Length; i++)
+                {
+                    ListNode<Data> node = this.data[i];
+                    while(node != null)
+                    {
+                        yield return node.Value.Value;
+                        node = node.Next;
+                    }
+                }
+            }
+        }
+
         public bool Delete(K key)
         {
             int index = this.GetIndex(key);
