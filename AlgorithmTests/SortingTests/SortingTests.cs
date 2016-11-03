@@ -65,14 +65,19 @@ namespace AlgorithmTests.SortingTests
             SortingTests.TestSortingAlgorithm(
                 data =>
                 {
-                    BinarySearchTree tree = new BinarySearchTree();
+                    BinaryTreeNode<int> root = null;
                     foreach (int x in data)
-                        tree.Add(x);
+                    {
+                        if (root == null)
+                            root = new BinaryTreeNode<int>(x);
+                        else
+                            BinarySearchTree.Insert(root, x);
+                    }
 
                     int i = 0;
-                    foreach (int x in tree.Values)
+                    foreach (BinaryTreeNode<int> x in BinaryTree.InOrderTraversal(root))
                     {
-                        data[i] = x;
+                        data[i] = x.Data;
                         i++;
                     }
                 });

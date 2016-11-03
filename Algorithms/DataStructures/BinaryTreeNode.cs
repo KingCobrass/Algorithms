@@ -13,5 +13,10 @@ namespace Algorithms.DataStructures
         public BinaryTreeNode<T> Parent { get; set; }
         public BinaryTreeNode<T> Left { get; set; }
         public BinaryTreeNode<T> Right { get; set; }
+
+        public BinaryTreeNode(T data = default(T))
+        {
+            this.Data = data;
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace Problems.LinkedLists
 
                 for(int j = 0; j < 20; j++)
                 {
-                    IsHeightBalanced.AddRandomNode(root);
+                    BinaryTreeUtilities.AddRandomNode(root, 0);
                     Tests.TestFunctions(root, functions);
                 }
             }
@@ -79,34 +79,6 @@ namespace Problems.LinkedLists
                 return null;
 
             return Math.Max(rightHeight.Value, leftHeight.Value) + 1;
-        }
-
-        private static void AddRandomNode(BinaryTreeNode<int> node)
-        {
-            Random random = new Random();
-
-            while(true)
-            {
-                if (random.Next(2) == 0)
-                {
-                    if (node.Left == null)
-                    {
-                        node.Left = new BinaryTreeNode<int>();
-                        return;
-                    }
-                    node = node.Left;
-                }
-                else
-                {
-                    if (node.Right == null)
-                    {
-                        node.Right = new BinaryTreeNode<int>();
-                        return;
-                    }
-                    node = node.Right;
-                }
-
-            }
         }
     }
 }

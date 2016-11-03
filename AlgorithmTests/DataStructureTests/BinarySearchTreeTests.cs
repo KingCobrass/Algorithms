@@ -18,13 +18,18 @@ namespace AlgorithmTests.DataStructureTests
             {
                 for(int j = 0; j < 100; j++)
                 {
-                    BinarySearchTree tree = new BinarySearchTree();
                     int[] data = Utilities.ArrayUtilities.CreateRandomArray(j, 0, BinarySearchTreeTests.MaxValue);
+
+                    BinaryTreeNode<int> root = null;
 
                     for (int k = 0; k < data.Length; k++)
                     {
-                        tree.Add(data[k]);
-                        BinarySearchTreeTests.ValidateTree(tree, data, k + 1);
+                        if (k == 0)
+                            root = new BinaryTreeNode<int>(data[k]);
+                        else
+                            BinarySearchTree.Insert(root, data[k]);
+
+                        BinarySearchTreeTests.ValidateTree(root, data, k + 1);
                     }
                 }
             }
@@ -35,48 +40,53 @@ namespace AlgorithmTests.DataStructureTests
         {
             for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < 100; j++)
+                for (int j = 1; j < 100; j++)
                 {
-                    BinarySearchTree tree = new BinarySearchTree();
                     int[] data = Utilities.ArrayUtilities.CreateRandomArray(j, 0, BinarySearchTreeTests.MaxValue);
 
-                    for (int k = 0; k < data.Length; k++)
-                        tree.Add(data[k]);
+                    BinaryTreeNode<int> root = new BinaryTreeNode<int>(data[0]);
 
-                    BinarySearchTreeTests.ValidateTree(tree, data, data.Length);
+                    for (int k = 1; k < data.Length; k++)
+                        BinarySearchTree.Insert(root, data[k]);
+
+                    BinarySearchTreeTests.ValidateTree(root, data, data.Length);
 
                     List<int> list = new List<int>(data);
-                    System.Random random = new System.Random();
-                    List<int> removed = new List<int>();
+                    Random random = new Random();
 
                     while(list.Count > 0)
                     {
                         int index = random.Next(0, list.Count);
                         int x = list[index];
-                        tree.Delete(x);
+
+                        BinaryTreeNode<int> toRemove = BinarySearchTree.Find(root, x);
+                        BinaryTreeNode<int> successor = BinaryTree.Delete(toRemove);
+
+                        if (toRemove == root)
+                            root = successor;
+
                         list.RemoveAt(index);
-                        removed.Add(x);
                         int[] remaining = list.ToArray();
-                        ValidateTree(tree, remaining, remaining.Length);
+                        ValidateTree(root, remaining, remaining.Length);
                     }
                 }
             }
         }
 
-        private static void ValidateTree(BinarySearchTree tree, int[] data, int count)
+        private static void ValidateTree(BinaryTreeNode<int> root, int[] data, int count)
         {
-            BinarySearchTreeTests.ValidateNode(tree.Root);
+            BinarySearchTreeTests.ValidateNode(root);
             int[] sorted = new int[count];
             Array.Copy(data, sorted, count);
             Array.Sort(sorted);
 
             foreach (int x in sorted)
-                Assert.IsTrue(tree.Contains(x));
+                Assert.IsNotNull(BinarySearchTree.Find(root, x));
 
             int l = 0;
-            foreach (int x in tree.Values)
+            foreach (BinaryTreeNode<int> x in BinaryTree.InOrderTraversal(root))
             {
-                Assert.AreEqual(x, sorted[l]);
+                Assert.AreEqual(x.Data, sorted[l]);
                 l++;
             }
 
