@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Algorithms.DataStructures;
 using Algorithms.Sorting;
@@ -11,58 +12,18 @@ namespace AlgorithmTests.SortingTests
     {
         private const int MaxValue = 1000;
 
-        [TestMethod]
-        public void BubbleSortTest()
+        public void SortingTest()
         {
-            SortingTests.TestSortingAlgorithm(BubbleSort.Sort);
-        }
-
-        [TestMethod]
-        public void BucketSortTest()
-        {
-            SortingTests.TestSortingAlgorithm(data => BucketSort.Sort(data, SortingTests.MaxValue));
-        }
-
-        [TestMethod]
-        public void CountingSortTest()
-        {
-            SortingTests.TestSortingAlgorithm(data => CountingSort.Sort(data, SortingTests.MaxValue));
-        }
-
-        [TestMethod]
-        public void HeapSortTest()
-        {
-            SortingTests.TestSortingAlgorithm(HeapSort.Sort);
-        }
-
-        [TestMethod]
-        public void InsertionSortTest()
-        {
-            SortingTests.TestSortingAlgorithm(InsertionSort.Sort);
-        }
-
-        [TestMethod]
-        public void MergeSortTest()
-        {
-            SortingTests.TestSortingAlgorithm(MergeSort.Sort);
-        }
-
-        [TestMethod]
-        public void QuickSortTest()
-        {
-            SortingTests.TestSortingAlgorithm(QuickSort.Sort);
-        }
-
-        [TestMethod]
-        public void RadixSortTest()
-        {
-            SortingTests.TestSortingAlgorithm(data => RadixSort.Sort(data, SortingTests.MaxValue));
-        }
-
-        [TestMethod]
-        public void BinaryTreeSortTest()
-        {
-            SortingTests.TestSortingAlgorithm(
+            Action<int[]>[] actions = new Action<int[]>[]
+            {
+                BubbleSort.Sort,
+                data => BucketSort.Sort(data, SortingTests.MaxValue),
+                data => CountingSort.Sort(data, SortingTests.MaxValue),
+                HeapSort.Sort,
+                InsertionSort.Sort,
+                MergeSort.Sort,
+                QuickSort.Sort,
+                data => RadixSort.Sort(data, SortingTests.MaxValue),
                 data =>
                 {
                     BinaryTreeNode<int> root = null;
@@ -74,40 +35,27 @@ namespace AlgorithmTests.SortingTests
                             BinarySearchTree.Insert(root, x);
                     }
 
-                    int i = 0;
-                    foreach (BinaryTreeNode<int> x in BinaryTree.InOrderTraversal(root))
-                    {
-                        data[i] = x.Data;
-                        i++;
-                    }
-                });
-        }
-
-        private static void TestSortingAlgorithm(Action<int[]> sortingAlgorithm)
-        {
-            System.Random random = new System.Random();
+                    Array.Copy(BinaryTree.InOrderTraversal(root).ToArray(), data, data.Length);
+                }
+            };
 
             for (int i = 0; i < 10; i++)
             {
-                for(int j = 0; j < 100; j++)
+                for (int j = 0; j < 100; j++)
                 {
                     int[] data = ArrayUtilities.CreateRandomArray(j, 0, SortingTests.MaxValue);
-                    SortingTests.TestSortingAlgorithm(sortingAlgorithm, data);
+                    int[][] results = new int[actions.Length][];
+
+                    for (int k = 0; k < actions.Length; k++)
+                    {
+                        results[k] = new int[data.Length];
+                        Array.Copy(data, results[k], data.Length);
+
+                        actions[k](results[k]);
+                        Assert.IsTrue(ArrayUtilities.AreEqual(results[k], results[0]));
+                    }
                 }
             }
-        }
-
-        private static void TestSortingAlgorithm(Action<int[]> sortingAlgorithm, int[] data)
-        {
-            int[] copy = new int[data.Length];
-            Array.Copy(data, copy, data.Length);
-
-            sortingAlgorithm(data);
-            Array.Sort(copy);
-
-            Assert.AreEqual(data.Length, copy.Length);
-            for (int i = 0; i < data.Length; i++)
-                Assert.AreEqual(data[i], copy[i]);
         }
     }
 }
