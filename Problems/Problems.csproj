@@ -67,6 +67,7 @@
     <Compile Include="PrimitiveTypes\ReverseBits.cs" />
     <Compile Include="PrimitiveTypes\SwapBits.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recursion\TowersOfHanoi.cs" />
     <Compile Include="SearchForFirstOccurrence.cs" />
     <Compile Include="Sorting\IntersectSortedArrays.cs" />
     <Compile Include="Stacks\StackWithMaxAPI.cs" />
