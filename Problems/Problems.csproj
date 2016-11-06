@@ -57,6 +57,7 @@
     <Compile Include="Arrays\IncrementInteger.cs" />
     <Compile Include="BinarySearchTrees\SatisfiesBST.cs" />
     <Compile Include="BinaryTrees\IsHeightBalanced.cs" />
+    <Compile Include="DynamicProgrammimg\ScoreCombinations.cs" />
     <Compile Include="HashTables\PalindromicPermutations.cs" />
     <Compile Include="Heaps\MergeSortedFiles.cs" />
     <Compile Include="LinkedLists\MergeTwoSortedLists.cs" />
