@@ -8,7 +8,7 @@
 
             while(p <= maxValue)
             {
-                CountingSort.Sort(data, 10, n => (n % (10 * p) - n % p) / p);
+                CountingSort.Sort(data, 10, n => (n / p) % 10);
                 p *= 10;
             }
         }
