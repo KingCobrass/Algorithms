@@ -48,13 +48,17 @@ namespace Problems.BinarySearchTrees
             if (root == null)
                 return true;
 
-            BinaryTreeNode<int> min = BinaryTree.Minimum(root);
-            if (min.Data > root.Data)
-                return false;
+            foreach (BinaryTreeNode<int> node in BinaryTree.InOrderTraversal(root.Left))
+            {
+                if (node.Data > root.Data)
+                    return false;
+            }
 
-            BinaryTreeNode<int> max = BinaryTree.Maximum(root);
-            if (max.Data < root.Data)
-                return false;
+            foreach (BinaryTreeNode<int> node in BinaryTree.InOrderTraversal(root.Right))
+            {
+                if (node.Data < root.Data)
+                    return false;
+            }
 
             return SatisfiesBST.BruteForce(root.Left) && SatisfiesBST.BruteForce(root.Right);
         }
