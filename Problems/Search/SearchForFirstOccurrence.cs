@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Utilities;
 
-namespace Problems
+namespace Problems.Search
 {
     // EOPI 12.1
     [TestClass]
