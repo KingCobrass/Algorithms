@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Arrays\BuySellOnce.cs" />
     <Compile Include="Arrays\DutchNationalFlag.cs" />
+    <Compile Include="Arrays\FirstMissingElement.cs" />
     <Compile Include="Arrays\IncrementInteger.cs" />
     <Compile Include="BinarySearchTrees\SatisfiesBST.cs" />
     <Compile Include="BinaryTrees\IsHeightBalanced.cs" />
