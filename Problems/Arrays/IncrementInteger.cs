@@ -7,6 +7,7 @@ namespace Problems.Arrays
     [TestClass]
     public class IncrementInteger
     {
+        // EOPI 6.2
         [TestMethod]
         public void IncrementIntegerTest()
         {

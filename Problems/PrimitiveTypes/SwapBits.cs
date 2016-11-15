@@ -4,6 +4,7 @@ using Utilities;
 
 namespace Problems.PrimitiveTypes
 {
+    // EOPI 5.2
     [TestClass]
     public class SwapBits
     {

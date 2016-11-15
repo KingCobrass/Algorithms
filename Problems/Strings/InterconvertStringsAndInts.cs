@@ -8,6 +8,7 @@ namespace Problems.Strings
     [TestClass]
     public class InterconvertStringsAndInts
     {
+        // EOPI 7.1
         [TestMethod]
         public void InterconvertStringsAndIntsTest()
         {

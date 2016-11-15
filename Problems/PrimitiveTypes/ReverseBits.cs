@@ -4,6 +4,7 @@ using Utilities;
 
 namespace Problems.PrimitiveTypes
 {
+    // EOPI 5.3
     [TestClass]
     public class ReverseBits
     {

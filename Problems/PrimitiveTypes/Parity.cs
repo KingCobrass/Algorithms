@@ -4,6 +4,7 @@ using Utilities;
 
 namespace Problems.PrimitiveTypes
 {
+    // EOPI 5.1
     [TestClass]
     public class Parity
     {
