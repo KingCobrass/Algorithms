@@ -58,6 +58,7 @@
     <Compile Include="Arrays\IncrementInteger.cs" />
     <Compile Include="BinarySearchTrees\SatisfiesBST.cs" />
     <Compile Include="BinaryTrees\IsHeightBalanced.cs" />
+    <Compile Include="DynamicProgrammimg\CircusTower.cs" />
     <Compile Include="DynamicProgrammimg\ScoreCombinations.cs" />
     <Compile Include="Graphs\SearchMaze.cs" />
     <Compile Include="Greedy\OptimumAssignmentOfTasks.cs" />
