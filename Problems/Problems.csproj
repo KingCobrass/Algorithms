@@ -77,6 +77,7 @@
     <Compile Include="Sorting\IntersectSortedArrays.cs" />
     <Compile Include="Stacks\StackWithMaxAPI.cs" />
     <Compile Include="Strings\InterconvertStringsAndInts.cs" />
+    <Compile Include="Strings\IsUnique.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Algorithms\Algorithms.csproj">
