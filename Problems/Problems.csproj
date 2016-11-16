@@ -67,6 +67,7 @@
     <Compile Include="LinkedLists\MergeTwoSortedLists.cs" />
     <Compile Include="PrimitiveTypes\AddWithoutPlus.cs" />
     <Compile Include="PrimitiveTypes\ComputeGCD.cs" />
+    <Compile Include="PrimitiveTypes\FactorialZeros.cs" />
     <Compile Include="PrimitiveTypes\Multiply.cs" />
     <Compile Include="PrimitiveTypes\Closest.cs" />
     <Compile Include="PrimitiveTypes\Parity.cs" />
