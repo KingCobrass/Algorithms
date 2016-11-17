@@ -91,7 +91,7 @@ namespace Algorithms.DataStructures
 
         private int GetIndex(K key)
         {
-            return key.GetHashCode() % this.data.Length;
+            return Math.Abs(key.GetHashCode()) % this.data.Length;
         }
 
         private ListNode<Data> GetNode(K key)
