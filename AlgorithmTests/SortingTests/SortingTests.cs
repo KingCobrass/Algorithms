@@ -12,6 +12,7 @@ namespace AlgorithmTests.SortingTests
     {
         private const int MaxValue = 1000;
 
+        [TestMethod]
         public void SortingTest()
         {
             Action<int[]>[] actions = new Action<int[]>[]
@@ -24,19 +25,6 @@ namespace AlgorithmTests.SortingTests
                 MergeSort.Sort,
                 QuickSort.Sort,
                 data => RadixSort.Sort(data, SortingTests.MaxValue),
-                data =>
-                {
-                    BinaryTreeNode<int> root = null;
-                    foreach (int x in data)
-                    {
-                        if (root == null)
-                            root = new BinaryTreeNode<int>(x);
-                        else
-                            BinarySearchTree.Insert(root, x);
-                    }
-
-                    Array.Copy(BinaryTree.InOrderTraversal(root).ToArray(), data, data.Length);
-                }
             };
 
             for (int i = 0; i < 10; i++)
