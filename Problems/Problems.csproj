@@ -66,6 +66,7 @@
     <Compile Include="HashTables\PalindromicPermutations.cs" />
     <Compile Include="Heaps\MergeSortedFiles.cs" />
     <Compile Include="LinkedLists\MergeTwoSortedLists.cs" />
+    <Compile Include="LinkedLists\RemoveDups.cs" />
     <Compile Include="PrimitiveTypes\AddWithoutPlus.cs" />
     <Compile Include="PrimitiveTypes\ComputeGCD.cs" />
     <Compile Include="PrimitiveTypes\FactorialZeros.cs" />
