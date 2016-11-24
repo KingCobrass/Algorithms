@@ -1,62 +1,55 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Algorithms.DataStructures
 {
     public class Stack<T>
     {
-        private ListNode<T> head;
-        private ListNode<T> tail;
+        private ListNode<T> top;
 
-        public int Count { get; private set; }
+        public bool IsEmpty
+        {
+            get
+            {
+                return this.top == null;
+            }
+        }
 
         public T Peek()
         {
-            return this.tail.Value;
+            this.ThrowIfEmpty();
+            return this.top.Value;
         }
 
         public void Push(T item)
         {
             ListNode<T> node = new ListNode<T>(item);
-            if(this.tail == null)
-            {
-                this.head = this.tail = node;
-            }
-            else
-            {
-                this.tail.Next = node;
-                node.Previous = this.tail;
-                this.tail = node;
-            }
-
-            this.Count++;
+            node.Next = this.top;
+            this.top = node;
         }
 
         public T Pop()
         {
-            ListNode<T> node = this.tail;
-            if(this.tail.Previous == null)
-            {
-                this.head = this.tail = null;
-            }
-            else
-            {
-                this.tail = this.tail.Previous;
-                this.tail.Next = null;
-            }
-
-            this.Count--;
-
+            this.ThrowIfEmpty();
+            ListNode<T> node = this.top;
+            this.top = node.Next;
             return node.Value;
         }
 
         public IEnumerable<T> Items()
         {
-            ListNode<T> node = this.head;
+            ListNode<T> node = this.top;
             while(node != null)
             {
                 yield return node.Value;
                 node = node.Next;
             }
+        }
+
+        private void ThrowIfEmpty()
+        {
+            if (this.IsEmpty)
+                throw new InvalidOperationException();
         }
     }
 }

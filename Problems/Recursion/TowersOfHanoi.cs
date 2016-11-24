@@ -26,9 +26,9 @@ namespace Problems.Recursion
 
             TowersOfHanoi.MoveTower(towers, 0, 2, 1, n);
 
-            Assert.IsTrue(towers[0].Count == 0);
-            Assert.IsTrue(towers[1].Count == 0);
-            Assert.IsTrue(towers[2].Count == n);
+            Assert.IsTrue(towers[0].IsEmpty);
+            Assert.IsTrue(towers[1].IsEmpty);
+            Assert.IsFalse(towers[2].IsEmpty);
 
             for(int i = 1; i <= n; i++)
             {

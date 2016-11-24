@@ -48,7 +48,7 @@ namespace Problems.Stacks
         {
             public abstract void Push(int item);
             public abstract int Pop();
-            public abstract int Count { get; }
+            public abstract bool IsEmpty { get; }
             public abstract int Max { get; }
         }
 
@@ -56,11 +56,11 @@ namespace Problems.Stacks
         {
             private Stack<int> stack = new Stack<int>();
 
-            public override int Count
+            public override bool IsEmpty
             {
                 get
                 {
-                    return this.stack.Count;
+                    return this.stack.IsEmpty;
                 }
             }
 
@@ -94,11 +94,11 @@ namespace Problems.Stacks
 
             Stack<CacheNode> stack = new Stack<CacheNode>();
 
-            public override int Count
+            public override bool IsEmpty
             {
                 get
                 {
-                    return this.stack.Count;
+                    return this.stack.IsEmpty;
                 }
             }
 
@@ -115,7 +115,7 @@ namespace Problems.Stacks
             {
                 CacheNode node = new CacheNode { Value = item };
 
-                if (this.stack.Count == 0)
+                if (this.stack.IsEmpty)
                     node.Max = item;
                 else
                 {
@@ -144,11 +144,11 @@ namespace Problems.Stacks
             private Stack<int> stack = new Stack<int>();
             private Stack<CacheNode> cache = new Stack<CacheNode>();
 
-            public override int Count
+            public override bool IsEmpty
             {
                 get
                 {
-                    return this.stack.Count;
+                    return this.stack.IsEmpty;
                 }
             }
 
@@ -165,7 +165,7 @@ namespace Problems.Stacks
             {
                 this.stack.Push(item);
 
-                if(this.cache.Count > 0)
+                if(!this.cache.IsEmpty)
                 {
                     CacheNode node = cache.Peek();
                     if (node.Value == item)
