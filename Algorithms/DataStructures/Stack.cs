@@ -36,13 +36,16 @@ namespace Algorithms.DataStructures
             return node.Value;
         }
 
-        public IEnumerable<T> Items()
+        public IEnumerable<T> Items
         {
-            ListNode<T> node = this.top;
-            while(node != null)
+            get
             {
-                yield return node.Value;
-                node = node.Next;
+                ListNode<T> node = this.top;
+                while (node != null)
+                {
+                    yield return node.Value;
+                    node = node.Next;
+                }
             }
         }
 

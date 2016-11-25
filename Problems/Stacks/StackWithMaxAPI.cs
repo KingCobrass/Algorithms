@@ -68,7 +68,7 @@ namespace Problems.Stacks
             {
                 get
                 {
-                    return this.stack.Items().Max();
+                    return this.stack.Items.Max();
                 }
             }
 
