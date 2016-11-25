@@ -32,7 +32,7 @@ namespace AlgorithmTests.GraphAlgorithmTests
                         Assert.AreEqual(bellmanFord[k], djikstra[k]);
                 }
 
-                Graphs.SetRandomEdge(graph, n);
+                GraphUtilities.SetRandomEdge(graph, n);
             }
         }
     }

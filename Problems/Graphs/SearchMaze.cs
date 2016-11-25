@@ -25,7 +25,7 @@ namespace Problems.Graphs
 
             for(int i = 0; i < n * n - 2; i++)
             {
-                Utilities.Graphs.SetRandomEdge(maze, n);
+                Utilities.GraphUtilities.SetRandomEdge(maze, n);
                 Tests.TestFunctions(maze, new Cell { X = 0, Y = 0 }, new Cell { X = n - 1, Y = n - 1 }, functions);
             }
         }

@@ -24,7 +24,7 @@ namespace AlgorithmTests.GraphAlgorithmTests
                         Assert.AreEqual(allPaths[j, k], depths[k]);
                 }
 
-                Graphs.SetRandomEdge(graph, n);
+                GraphUtilities.SetRandomEdge(graph, n);
             }
         }
 

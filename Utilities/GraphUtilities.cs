@@ -1,6 +1,8 @@
-﻿namespace Utilities
+﻿using System;
+
+namespace Utilities
 {
-    public static class Graphs
+    public static class GraphUtilities
     {
         public static void SetRandomEdge(bool[,] graph, int n)
         {
@@ -9,7 +11,7 @@
             int j = 0;
 
             int count = 0;
-            System.Random random = new System.Random();
+            Random random = new Random();
 
             for (int k = 0; k < n; k++)
             {
@@ -40,7 +42,7 @@
             int j = 0;
 
             int count = 0;
-            System.Random random = new System.Random();
+            Random random = new Random();
 
             for (int k = 0; k < n; k++)
             {

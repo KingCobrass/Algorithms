@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="ArrayUtilities.cs" />
     <Compile Include="BinaryTreeUtilities.cs" />
-    <Compile Include="Graphs.cs" />
+    <Compile Include="GraphUtilities.cs" />
     <Compile Include="LinkedListUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StackUtilities.cs" />

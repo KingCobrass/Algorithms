@@ -26,7 +26,7 @@ namespace AlgorithmTests.GraphAlgorithmTests
                         Assert.AreEqual(expected[k], actual[k]);
                 }
 
-                Graphs.SetRandomEdge(graph, n);
+                GraphUtilities.SetRandomEdge(graph, n);
             }
         }
 

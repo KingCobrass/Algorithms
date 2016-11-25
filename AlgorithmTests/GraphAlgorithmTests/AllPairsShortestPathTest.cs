@@ -31,7 +31,7 @@ namespace AlgorithmTests.GraphAlgorithmTests
                         Assert.AreEqual(floydWarshall[j, k], djikstra[k]);
                 }
 
-                Graphs.SetRandomEdge(graph, n);
+                GraphUtilities.SetRandomEdge(graph, n);
             }
         }
     }
