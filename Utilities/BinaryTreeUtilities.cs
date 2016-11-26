@@ -53,5 +53,13 @@ namespace Utilities
                 }
             }
         }
+
+        public static int Height<T>(BinaryTreeNode<T> root)
+        {
+            if (root == null)
+                return 0;
+
+            return Math.Max(BinaryTreeUtilities.Height(root.Left), BinaryTreeUtilities.Height(root.Right)) + 1;
+        }
     }
 }
