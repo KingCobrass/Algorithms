@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Utilities;
 
-namespace Problems.PrimitiveTypes
+namespace Problems.Mathematical
 {
     // EOPI 25.1
     [TestClass]
