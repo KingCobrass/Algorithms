@@ -37,5 +37,16 @@ namespace Utilities
                 Assert.AreEqual(results[0], results[i]);
             }
         }
+
+        public static void TestFunctions<T, U, V, W, X>(T p1, U p2, V p3, W p4, params Func<T, U, V, W, X>[] functions)
+        {
+            X[] results = new X[functions.Length];
+
+            for (int i = 0; i < results.Length; i++)
+            {
+                results[i] = functions[i](p1, p2, p3, p4);
+                Assert.AreEqual(results[0], results[i]);
+            }
+        }
     }
 }
