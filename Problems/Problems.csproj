@@ -64,6 +64,7 @@
     <Compile Include="BitManipulation\Insertion.cs" />
     <Compile Include="DynamicProgrammimg\CircusTower.cs" />
     <Compile Include="DynamicProgrammimg\ScoreCombinations.cs" />
+    <Compile Include="DynamicProgrammimg\TripleStep.cs" />
     <Compile Include="Graphs\RouteBetweenNodes.cs" />
     <Compile Include="Graphs\SearchMaze.cs" />
     <Compile Include="Greedy\OptimumAssignmentOfTasks.cs" />
