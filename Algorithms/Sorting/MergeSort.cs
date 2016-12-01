@@ -20,8 +20,7 @@ namespace Algorithms.Sorting
             MergeSort.Sort(data, copy, start, middle);
             MergeSort.Sort(data, copy, middle + 1, end);
 
-            Array.Copy(data, start, copy, start, middle - start + 1);
-            Array.Copy(data, middle + 1, copy, middle + 1, end - middle);
+            Array.Copy(data, start, copy, start, end - start + 1);
 
             int left = start;
             int right = middle + 1;
