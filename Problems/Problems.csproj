@@ -88,6 +88,7 @@
     <Compile Include="Sorting\SortedMerge.cs" />
     <Compile Include="Stacks\SortStack.cs" />
     <Compile Include="Stacks\StackWithMaxAPI.cs" />
+    <Compile Include="Strings\BaseConversion.cs" />
     <Compile Include="Strings\InterconvertStringsAndInts.cs" />
     <Compile Include="Strings\IsUnique.cs" />
   </ItemGroup>
