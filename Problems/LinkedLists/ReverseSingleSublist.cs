@@ -55,28 +55,20 @@ namespace Problems.LinkedLists
 
             ListNode<int> sentinel = new ListNode<int>();
             sentinel.Next = head;
-            ListNode<int> current = head;
-            ListNode<int> predecessor = sentinel;
+            ListNode<int> previous = sentinel;
 
             for(int i = 1; i < start; i++)
-            {
-                predecessor = current;
-                current = current.Next;
-            }
+                previous = previous.Next;
 
-            ListNode<int> subListHead = current;
-            ListNode<int> previous = null;
+            ListNode<int> current = previous.Next;
 
-            for(int i = start; i <= end; i++)
+            for(int i = start; i < end; i++)
             {
                 ListNode<int> next = current.Next;
-                current.Next = previous;
-                previous = current;
-                current = next;
+                current.Next = next.Next;
+                next.Next = previous.Next;
+                previous.Next = next;
             }
-
-            predecessor.Next = previous;
-            subListHead.Next = current;
 
             return sentinel.Next;
         }
