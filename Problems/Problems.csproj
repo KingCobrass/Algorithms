@@ -75,6 +75,7 @@
     <Compile Include="LinkedLists\MergeTwoSortedLists.cs" />
     <Compile Include="LinkedLists\RemoveDups.cs" />
     <Compile Include="BitManipulation\AddWithoutPlus.cs" />
+    <Compile Include="LinkedLists\ReverseSingleSublist.cs" />
     <Compile Include="Mathematical\ComputeGCD.cs" />
     <Compile Include="Mathematical\FactorialZeros.cs" />
     <Compile Include="BitManipulation\Multiply.cs" />

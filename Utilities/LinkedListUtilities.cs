@@ -9,7 +9,6 @@ namespace Utilities
 {
     public static class LinkedListUtilities
     {
-
         public static ListNode<T> Initialize<T>(T[] data)
         {
             ListNode<T> sentinel = new ListNode<T>();
@@ -70,6 +69,20 @@ namespace Utilities
         public static T[] ToArray<T>(ListNode<T> head)
         {
             return LinkedListUtilities.Enumerate(head).Select(o => o.Value).ToArray();
+        }
+
+        public static bool AreEqual<T>(ListNode<T> a, ListNode<T> b)
+        {
+            while(a != null && b != null)
+            {
+                if (!a.Value.Equals(b.Value))
+                    return false;
+
+                a = a.Next;
+                b = b.Next;
+            }
+
+            return (a == null && b == null);
         }
     }
 }
