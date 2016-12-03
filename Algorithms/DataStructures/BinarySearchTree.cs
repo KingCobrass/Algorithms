@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Algorithms.DataStructures
 {
-    public class BinarySearchTree
+    public static class BinarySearchTree
     {
         public static BinaryTreeNode<T> Find<T>(BinaryTreeNode<T> root, T value)
             where T : IComparable<T>

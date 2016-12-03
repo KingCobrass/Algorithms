@@ -18,7 +18,7 @@ namespace AlgorithmTests.DataStructureTests
             {
                 for(int j = 0; j < 100; j++)
                 {
-                    int[] data = Utilities.ArrayUtilities.CreateRandomArray(j, 0, BinarySearchTreeTests.MaxValue);
+                    int[] data = ArrayUtilities.CreateRandomArray(j, 0, BinarySearchTreeTests.MaxValue);
 
                     BinaryTreeNode<int> root = null;
 
