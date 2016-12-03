@@ -58,6 +58,7 @@
     <Compile Include="Arrays\IncrementInteger.cs" />
     <Compile Include="Arrays\LettersAndNumbers.cs" />
     <Compile Include="Arrays\MultiplyInteger.cs" />
+    <Compile Include="BinarySearchTrees\FirstGreater.cs" />
     <Compile Include="BinarySearchTrees\LargestElements.cs" />
     <Compile Include="BinarySearchTrees\MinimalTree.cs" />
     <Compile Include="BinarySearchTrees\SatisfiesBST.cs" />

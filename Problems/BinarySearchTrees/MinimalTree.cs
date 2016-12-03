@@ -5,10 +5,10 @@ using Utilities;
 
 namespace Problems.BinarySearchTrees
 {
+    // CTCI 4.2
     [TestClass]
     public class MinimalTree
     {
-        // CTCI 4.2
         [TestMethod]
         public void MinimalTreeTest()
         {

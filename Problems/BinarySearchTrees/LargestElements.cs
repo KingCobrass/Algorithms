@@ -7,10 +7,10 @@ using Utilities;
 
 namespace Problems.BinarySearchTrees
 {
+    // EOPI 15.3
     [TestClass]
     public class LargestElements
     {
-        // EOPI 15.3
         [TestMethod]
         public void LargestElementsTest()
         {
