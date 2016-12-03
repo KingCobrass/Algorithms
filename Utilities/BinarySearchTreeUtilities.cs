@@ -19,9 +19,21 @@ namespace Utilities
                 if (root == null)
                     root = new BinaryTreeNode<int>(value);
                 else
-                {
                     BinarySearchTree.Insert(root, value);
-                }
+            }
+
+            return root;
+        }
+
+        public static BinaryTreeNode<int> FromArray(int[] data)
+        {
+            BinaryTreeNode<int> root = null;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (root == null)
+                    root = new BinaryTreeNode<int>(data[i]);
+                else
+                    BinarySearchTree.Insert(root, data[i]);
             }
 
             return root;

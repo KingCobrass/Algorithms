@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Utilities
 {
@@ -33,6 +34,19 @@ namespace Utilities
             }
 
             return true;
+        }
+
+        public static int[] CreateRandomPermutation(int n)
+        {
+            List<int> list = new List<int>();
+            Random random = new Random();
+            while (n > 0)
+            {
+                n--;
+                list.Insert(random.Next(0, list.Count + 1), n);
+            }
+
+            return list.ToArray();
         }
     }
 }
