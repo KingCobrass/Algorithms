@@ -68,6 +68,7 @@
     <Compile Include="BitManipulation\Insertion.cs" />
     <Compile Include="BitManipulation\NumberSwapper.cs" />
     <Compile Include="DynamicProgrammimg\CircusTower.cs" />
+    <Compile Include="DynamicProgrammimg\LevenshteinDistance.cs" />
     <Compile Include="DynamicProgrammimg\ScoreCombinations.cs" />
     <Compile Include="DynamicProgrammimg\TripleStep.cs" />
     <Compile Include="Graphs\RouteBetweenNodes.cs" />
