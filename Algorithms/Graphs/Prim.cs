@@ -5,10 +5,49 @@ using System.Text;
 using System.Threading.Tasks;
 using Algorithms.DataStructures;
 
-namespace Algorithms.GraphAlgorithms
+namespace Algorithms.Graphs
 {
     public static class Prim
     {
+        public static Edge[] Run(Vertex[] vertices)
+        {
+            PriorityQueue<Vertex> queue = new PriorityQueue<Vertex>((x, y) => y.Depth.CompareTo(x.Depth));
+            List<Edge> results = new List<Edge>();
+
+            vertices[0].Depth = 0;
+            queue.Insert(vertices[0]);
+
+            while(!queue.IsEmpty)
+            {
+                Vertex current = queue.Pop();
+                current.Color = Color.Black;
+
+                foreach (Edge edge in current.Edges)
+                {
+                    if (edge.To.Color == Color.Black)
+                        continue;
+
+                    if (edge.To.Depth > edge.Weight)
+                    {
+                        edge.To.Depth = edge.Weight;
+                        queue.Insert(edge.To);
+                        results.Add(edge);
+                    }
+                }
+            }
+
+            return results.ToArray();
+        }
+
+        private class VertexNode : IComparable<VertexNode>
+        {
+            public Vertex Vertex { get; private set; }
+            public int CompareTo(VertexNode other)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public static int[,] Run(int[,] graph)
         {
             int n = graph.GetLength(0);

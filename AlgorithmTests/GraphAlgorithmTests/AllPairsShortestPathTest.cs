@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Algorithms.GraphAlgorithms;
+using Algorithms.Graphs;
 using Utilities;
 
 namespace AlgorithmTests.GraphAlgorithmTests

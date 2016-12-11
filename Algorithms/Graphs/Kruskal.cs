@@ -4,10 +4,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Algorithms.GraphAlgorithms
+namespace Algorithms.Graphs
 {
     public static class Kruskal
     {
+        public static Graphs.Edge[] Run(Vertex[] vertices)
+        {
+            Dictionary<Vertex, List<Vertex>> sets = new Dictionary<Vertex, List<Vertex>>();
+            foreach(Vertex v in vertices)
+            {
+                sets[v] = new List<Vertex>();
+                sets[v].Add(v);
+            }
+
+            List<Graphs.Edge> results = new List<Graphs.Edge>();
+
+            foreach(Graphs.Edge edge in vertices.SelectMany(v => v.Edges).OrderBy(e => e.Weight))
+            {
+                List<Vertex> from = sets[edge.From];
+                List<Vertex> to = sets[edge.To];
+
+                if(from != to)
+                {
+                    results.Add(edge);
+                    foreach(Vertex v in to)
+                    {
+                        from.Add(v);
+                        sets[v] = from;
+                    }
+                }
+            }
+
+            return results.ToArray();
+        }
         private class Edge
         {
             public int From { get; set; }
