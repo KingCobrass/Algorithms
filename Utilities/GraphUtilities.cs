@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using Algorithms.Graphs;
 
 namespace Utilities
 {
@@ -64,6 +66,36 @@ namespace Utilities
 
             if (found)
                 graph[i, j] = random.Next(1, 10);
+        }
+
+        public static void SetRandomEdge(Vertex[] vertices)
+        {
+            bool found = false;
+            int i = 0;
+            int j = 0;
+
+            int count = 0;
+            Random random = new Random();
+
+            for (int k = 0; k < vertices.Length; k++)
+            {
+                for(int l = 0; l < vertices.Length; l++)
+                {
+                    if (k == l || vertices[k].Vertices.Any(v => v == vertices[l]))
+                        continue;
+
+                    count++;
+                    if(random.Next(0, count) == 0)
+                    {
+                        i = k;
+                        j = l;
+                        found = true;
+                    }
+                }
+            }
+
+            if (found)
+                vertices[i].AddDirectedEdge(vertices[j]);
         }
     }
 }

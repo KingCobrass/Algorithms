@@ -10,37 +10,30 @@ namespace AlgorithmTests.GraphAlgorithmTests
         [TestMethod]
         public void BreadthFirstSearchTest()
         {
-            int n = 10;
-            bool[,] graph = new bool[n, n];
+            Vertex[] vertices = new Vertex[10];
+            for (int i = 0; i < vertices.Length; i++)
+                vertices[i] = new Vertex();
 
-            for(int i = 0; i <= n * n; i++)
+            for (int i = 0; i <= vertices.Length * (vertices.Length - 1); i++)
             {
-                int[,] allPaths = BreadthFirstSearchTestClass.CreateAllPathsGraph(graph, n);
+                int[,] allPaths = FloydWarshall.Run(vertices);
 
-                for (int j = 0; j < n; j++)
+                for (int j = 0; j < vertices.Length; j++)
                 {
-                    int[] depths = BreadthFirstSearch.Run(graph, j);
-                    for (int k = 0; k < n; k++)
-                        Assert.AreEqual(allPaths[j, k], depths[k]);
+                    BreadthFirstSearch.Run(vertices[j]);
+                    for (int k = 0; k < vertices.Length; k++)
+                    {
+                        Assert.IsFalse(vertices[k].Color == Color.Gray);
+                        Assert.AreEqual(vertices[k].Color == Color.White, vertices[k].Depth == int.MaxValue);
+                        Assert.AreEqual(vertices[k].Depth, allPaths[j, k]);
+                    }
+
+                    foreach (Vertex vertex in vertices)
+                        vertex.Reset();
                 }
 
-                GraphUtilities.SetRandomEdge(graph, n);
+                GraphUtilities.SetRandomEdge(vertices);
             }
-        }
-
-        private static int[,] CreateAllPathsGraph(bool[,] graph, int n)
-        {
-            int[,] weightedGraph = new int[n, n];
-            for (int i = 0; i < n; i++)
-            {
-                for (int j = 0; j < n; j++)
-                {
-                    if (i != j)
-                        weightedGraph[i, j] = graph[i, j] ? 1 : int.MaxValue;
-                }
-            }
-
-            return FloydWarshall.Run(weightedGraph);
         }
     }
 }

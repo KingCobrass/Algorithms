@@ -15,7 +15,8 @@ namespace Algorithms.Graphs
             {
                 for (int j = 0; j < depths.GetLength(1); j++)
                 {
-                    depths[i, j] = int.MaxValue;
+                    if(i != j)
+                        depths[i, j] = int.MaxValue;
                 }
             }
 
@@ -37,8 +38,8 @@ namespace Algorithms.Graphs
                 {
                     for (int k = 0; k < vertices.Length; k++)
                     {
-                        if(depths[i, j] != int.MaxValue && depths[j, k] != int.MaxValue)
-                            depths[i, k] = Math.Min(depths[i, k], depths[i, j] + depths[j, k]);
+                        if(depths[j, i] != int.MaxValue && depths[i, k] != int.MaxValue)
+                            depths[j, k] = Math.Min(depths[j, k], depths[j, i] + depths[i, k]);
                     }
                 }
             }

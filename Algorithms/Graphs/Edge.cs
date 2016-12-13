@@ -8,8 +8,15 @@ namespace Algorithms.Graphs
 {
     public class Edge
     {
-        public Vertex From { get; set; }
-        public Vertex To { get; set; }
-        public int Weight { get; set; }
+        public Vertex From { get; }
+        public Vertex To { get; }
+        public int Weight { get; }
+
+        public Edge(Vertex from, Vertex to, int weight)
+        {
+            this.From = from;
+            this.To = to;
+            this.Weight = weight;
+        }
     }
 }

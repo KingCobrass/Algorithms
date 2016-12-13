@@ -23,8 +23,7 @@ namespace Algorithms.Graphs
 
         public Vertex()
         {
-            this.Color = Color.White;
-            this.Depth = int.MaxValue;
+            this.Reset();
         }
 
         public IEnumerable<Edge> Edges
@@ -43,11 +42,22 @@ namespace Algorithms.Graphs
             }
         }
 
-        public void AddEdge(Vertex to, bool directed = true)
+        public void AddDirectedEdge(Vertex to, int weight = 1)
         {
-            this.edges.Add(new Edge { From = this, To = to });
-            if (!directed)
-                to.AddEdge(this, false);
+            this.edges.Add(new Edge(this, to, weight));
+        }
+
+        public void AddUnDirectedEdge(Vertex to, int weight = 1)
+        {
+            this.AddDirectedEdge(to, weight);
+            to.AddDirectedEdge(this, weight);
+        }
+
+        public void Reset()
+        {
+            this.Color = Color.White;
+            this.Depth = int.MaxValue;
+            this.Parent = null;
         }
     }
 }
