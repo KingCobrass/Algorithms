@@ -15,7 +15,7 @@ namespace Algorithms.Graphs
                 {
                     foreach(Edge e in v.Edges)
                     {
-                        if(e.From.Depth + e.Weight < e.To.Depth)
+                        if(e.From.Depth != int.MaxValue && e.From.Depth + e.Weight < e.To.Depth)
                         {
                             e.To.Depth = e.From.Depth + e.Weight;
                             e.To.Parent = e.From;
