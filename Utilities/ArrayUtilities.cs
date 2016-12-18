@@ -36,6 +36,26 @@ namespace Utilities
             return true;
         }
 
+        public static bool AreEqual<T>(T[,] a, T[,] b)
+        {
+            if (a.GetLength(0) != b.GetLength(0))
+                return false;
+
+            if (a.GetLength(1) != b.GetLength(1))
+                return false;
+
+            for (int i = 0; i < a.GetLength(0); i++)
+            {
+                for(int j = 0; j < a.GetLength(1); j++)
+                {
+                    if (!a[i,j].Equals(b[i,j]))
+                        return false;
+                }
+            }
+
+            return true;
+        }
+
         public static int[] CreateRandomPermutation(int n)
         {
             List<int> list = new List<int>();
