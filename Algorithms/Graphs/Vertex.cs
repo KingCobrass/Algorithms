@@ -53,6 +53,19 @@ namespace Algorithms.Graphs
             to.AddDirectedEdge(this, weight);
         }
 
+        public void RemoveDirectedEdge(Vertex to)
+        {
+            Edge edge = this.Edges.FirstOrDefault(e => e.To == to);
+            if (edge != null)
+                edges.Remove(edge);
+        }
+
+        public void RemoveUndirectedEdge(Vertex to)
+        {
+            this.RemoveDirectedEdge(to);
+            to.RemoveDirectedEdge(this);
+        }
+
         public void Reset()
         {
             this.Color = Color.White;

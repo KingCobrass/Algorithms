@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Algorithms.Graphs;
 
@@ -10,42 +11,46 @@ namespace AlgorithmTests.GraphAlgorithmTests
         [TestMethod]
         public void TopologicalSortTest()
         {
-            int n = 10;
-
-            for(int i = 0; i < 10; i++)
+            for(int n = 0; n < 5; n++)
             {
-                bool[,] graph = TopologicalSortTestClass.CreateDirectedAcyclicGraph(n);
+                Vertex[] vertices = TopologicalSortTestClass.CreateDirectedAcyclicGraph(n);
+                Vertex[] order = TopologicalSort.Run(vertices);
 
-                int[] order = TopologicalSort.Run(graph);
-
-                for (int j = n - 1; j >= 0; j--)
+                for (int i = n - 1; i >= 0; i--)
                 {
-                    bool[] visited = DepthFirstSearch.Run(graph, order[j]);
-                    for (int k = 0; k < j; k++)
-                        Assert.IsFalse(visited[order[k]]);
+                    foreach (Vertex v in vertices)
+                        v.Reset();
+
+                    DepthFirstSearch.Run(order[i]);
+                    for (int j = 0; j < i; j++)
+                        Assert.AreEqual(Color.White, order[j].Color);
                 }
             }
         }
 
-        private static bool[,] CreateDirectedAcyclicGraph(int n)
+        private static Vertex[] CreateDirectedAcyclicGraph(int n)
         {
-            bool[,] graph = new bool[n, n];
-            for(int i = 0; i < n; i++)
+            Vertex[] vertices = new Vertex[n];
+
+            for (int i = 0; i < vertices.Length; i++)
+                vertices[i] = new Vertex();
+
+            for(int i = 0; i < vertices.Length; i++)
             {
-                for(int j = 0; j < n; j++)
-                {
-                    if(i != j)
-                        graph[i, j] = true;
-                }
+                for (int j = 0; j < i; j++)
+                    vertices[i].AddUnDirectedEdge(vertices[j]);
             }
 
-            while (!TopologicalSortTestClass.IsDirectedAcyclicGraph(graph, n))
-                TopologicalSortTestClass.RemoveRandomEdge(graph, n);
+            while (!TopologicalSortTestClass.IsDirectedAcyclicGraph(vertices))
+                TopologicalSortTestClass.RemoveRandomEdge(vertices);
 
-            return graph;
+            foreach (Vertex v in vertices)
+                v.Reset();
+
+            return vertices;
         }
 
-        private static void RemoveRandomEdge(bool[,] graph, int n)
+        private static void RemoveRandomEdge(Vertex[] vertices)
         {
             bool found = false;
             int i = 0;
@@ -54,13 +59,10 @@ namespace AlgorithmTests.GraphAlgorithmTests
             int count = 0;
             Random random = new Random();
 
-            for (int k = 0; k < n; k++)
+            for (int k = 0; k < vertices.Length; k++)
             {
-                for (int l = 0; l < n; l++)
+                for (int l = 0; l < vertices.Length; l++)
                 {
-                    if (!graph[k, l])
-                        continue;
-
                     count++;
 
                     if (random.Next(0, count) == 0)
@@ -73,36 +75,31 @@ namespace AlgorithmTests.GraphAlgorithmTests
             }
 
             if (found)
-                graph[i, j] = false;
+                vertices[i].RemoveDirectedEdge(vertices[j]);
         }
 
-        private static bool IsDirectedAcyclicGraph(bool[,] graph, int n)
+        private static bool IsDirectedAcyclicGraph(Vertex[] vertices)
         {
-            bool[] visiting = new bool[n];
+            foreach (Vertex v in vertices)
+                v.Reset();
 
-            for (int i = 0; i < n; i++)
-            {
-                if (TopologicalSortTestClass.HasCycle(graph, n, i, visiting))
-                    return false;
-            }
-
-            return true;
+            return !vertices.Any(v => TopologicalSortTestClass.HasCycle(v));
         }
 
-        private static bool HasCycle(bool[,] graph, int n, int current, bool[] visiting)
+        private static bool HasCycle(Vertex vertex)
         {
-            if (visiting[current])
+            if (vertex.Color == Color.Gray)
                 return true;
 
-            visiting[current] = true;
+            if (vertex.Color == Color.Black)
+                return false;
 
-            for (int i = 0; i < n; i++)
-            {
-                if(graph[current, i] && TopologicalSortTestClass.HasCycle(graph, n, i, visiting))
-                    return true;
-            }
+            vertex.Color = Color.Gray;
 
-            visiting[current] = false;
+            if (vertex.Vertices.Any(v => TopologicalSortTestClass.HasCycle(v)))
+                return true;
+
+            vertex.Color = Color.Black;
 
             return false;
         }
