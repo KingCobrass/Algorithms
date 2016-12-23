@@ -45,12 +45,6 @@ namespace AlgorithmTests.GraphAlgorithmTests
             }
         }
 
-        private static bool[] CreateAllVisited(bool[,] graph, int start, int n)
-        {
-            int[] depths = BreadthFirstSearch.Run(graph, start);
-            return depths.Select(i => i != int.MaxValue).ToArray();
-        }
-
         private static bool[] RunDepthFirstSearch(Vertex[] vertices, int source)
         {
             DepthFirstSearch.Run(vertices[source]);
@@ -80,6 +74,5 @@ namespace AlgorithmTests.GraphAlgorithmTests
             int[,] depths = FloydWarshall.Run(vertices);
             return Enumerable.Range(0, vertices.Length).Select(i => depths[source, i] != int.MaxValue).ToArray();
         }
-
     }
 }
