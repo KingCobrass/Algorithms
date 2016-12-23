@@ -11,15 +11,14 @@ namespace Algorithms.Graphs
     {
         public static Edge[] Run(Vertex[] vertices)
         {
-            PriorityQueue<Vertex> queue = new PriorityQueue<Vertex>((x, y) => y.Depth.CompareTo(x.Depth));
-            List<Edge> results = new List<Edge>();
+            PriorityQueue<Node> queue = new MinPriorityQueue<Node>();
 
             vertices[0].Depth = 0;
-            queue.Insert(vertices[0]);
+            queue.Insert(new Node(vertices[0]));
 
             while(!queue.IsEmpty)
             {
-                Vertex current = queue.Pop();
+                Vertex current = queue.Pop().Vertex;
                 current.Color = Color.Black;
 
                 foreach (Edge edge in current.Edges)
@@ -30,75 +29,23 @@ namespace Algorithms.Graphs
                     if (edge.To.Depth > edge.Weight)
                     {
                         edge.To.Depth = edge.Weight;
-                        queue.Insert(edge.To);
-                        results.Add(edge);
+                        edge.To.Parent = current;
+                        queue.Insert(new Node(edge.To));
                     }
                 }
             }
 
-            return results.ToArray();
-        }
+            Edge[] results = new Edge[vertices.Length - 1];
 
-        private class VertexNode : IComparable<VertexNode>
-        {
-            public Vertex Vertex { get; private set; }
-            public int CompareTo(VertexNode other)
+            for(int i = 0; i < results.Length; i++)
             {
-                throw new NotImplementedException();
-            }
-        }
-
-        public static int[,] Run(int[,] graph)
-        {
-            int n = graph.GetLength(0);
-            if (n != graph.GetLength(1))
-                throw new ArgumentException(nameof(graph));
-
-            int[,] results = new int[n, n];
-            for (int i = 0; i < n; i++)
-            {
-                for (int j = i + 1; j < n; j++)
-                    results[i, j] = results[j, i] = int.MaxValue;
-            }
-
-            int[] parents = new int[n];
-
-            int[] priorities = new int[n];
-            for (int i = 1; i < priorities.Length; i++)
-                priorities[i] = int.MaxValue;
-
-            bool[] visited = new bool[n];
-
-            MinPriorityQueue<Node> queue = new MinPriorityQueue<Node>();
-            queue.Insert(new Node { Index = 0, Priority = 0 });
-
-            while(!queue.IsEmpty)
-            {
-                Node node = queue.Pop();
-                int current = node.Index;
-                if (visited[current])
-                    continue;
-
-                visited[current] = true;
-
-                results[current, parents[current]] = results[parents[current], current] = graph[current, parents[current]];
-
-                for (int i = 0; i < n; i++)
+                foreach(Edge edge in vertices[i + 1].Edges)
                 {
-                    if (visited[i])
-                        continue;
-
-                    int weight = graph[current, i];
-                    if (weight == int.MaxValue)
-                        continue;
-
-                    if(weight < priorities[i])
+                    if(edge.To == vertices[i + 1].Parent)
                     {
-                        priorities[i] = weight;
-                        parents[i] = current;
+                        results[i] = edge;
+                        break;
                     }
-
-                    queue.Insert(new Node { Index = i, Priority = priorities[i] });
                 }
             }
 
@@ -107,8 +54,14 @@ namespace Algorithms.Graphs
 
         private class Node : IComparable<Node>
         {
-            public int Index { get; set; }
-            public int Priority { get; set; }
+            public Vertex Vertex { get; private set; }
+            public int Priority { get; private set; }
+
+            public Node(Vertex vertex)
+            {
+                this.Vertex = vertex;
+                this.Priority = vertex.Depth;
+            }
 
             public int CompareTo(Node other)
             {

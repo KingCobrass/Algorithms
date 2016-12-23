@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Algorithms.Graphs;
+using Utilities;
 
 namespace AlgorithmTests.GraphAlgorithmTests
 {
@@ -11,39 +12,52 @@ namespace AlgorithmTests.GraphAlgorithmTests
         [TestMethod]
         public void MinimumSpanningTreeTest()
         {
+            Func<Vertex[], int>[] functions = new Func<Vertex[], int>[]
+            {
+                MinimumSpanningTreeTestClass.RunPrim,
+                MinimumSpanningTreeTestClass.RunKruskal
+            };
+            
             for(int i = 0; i < 10; i++)
             {
                 for(int n = 1; n <= 10; n++)
                 {
-                    int[,] graph = MinimumSpanningTreeTestClass.CreateSpanningTree(n);
-                    int[,] minimimSpanningTreeKruskal = Kruskal.Run(graph);
-                    int[,] minimumSpanningTreePrim = Prim.Run(graph);
-
-                    int kruskalLength = MinimumSpanningTreeTestClass.Length(minimimSpanningTreeKruskal, n);
-                    int primLength = MinimumSpanningTreeTestClass.Length(minimumSpanningTreePrim, n);
-
-                    Assert.AreEqual(kruskalLength, primLength);
+                    Vertex[] vertices = MinimumSpanningTreeTestClass.CreateSpanningTree(n);
+                    Tests.TestFunctions(vertices, functions);
                 }
             }
         }
 
-        private static int[,] CreateSpanningTree(int n)
+        private static int RunPrim(Vertex[] vertices)
         {
-            int[,] graph = new int[n, n];
+            foreach (Vertex v in vertices)
+                v.Reset();
 
-            for (int i = 0; i < n; i++)
-            {
-                for (int j = 0; j < n; j++)
-                    graph[i, j] = (i == j) ? 0 : int.MaxValue;
-            }
-
-            while (!MinimumSpanningTreeTestClass.IsSpanningTree(graph, n))
-                MinimumSpanningTreeTestClass.AddRandomWeightedEdge(graph, n, 10);
-
-            return graph;
+            return Prim.Run(vertices).Sum(e => e.Weight);
         }
 
-        private static void AddRandomWeightedEdge(int[,] graph, int n, int maxWeight)
+        private static int RunKruskal(Vertex[] vertices)
+        {
+            foreach (Vertex v in vertices)
+                v.Reset();
+
+            return Kruskal.Run(vertices).Sum(e => e.Weight);
+        }
+
+        private static Vertex[] CreateSpanningTree(int n)
+        {
+            Vertex[] vertices = new Vertex[n];
+            for (int i = 0; i < vertices.Length; i++)
+                vertices[i] = new Vertex();
+
+
+            while (!MinimumSpanningTreeTestClass.IsSpanningTree(vertices))
+                MinimumSpanningTreeTestClass.AddRandomWeightedEdge(vertices, 10);
+
+            return vertices;
+        }
+
+        private static void AddRandomWeightedEdge(Vertex[] vertices, int maxWeight)
         {
             bool found = false;
             int i = 0;
@@ -52,56 +66,35 @@ namespace AlgorithmTests.GraphAlgorithmTests
             int count = 0;
             Random random = new Random();
 
-            for (int k = 0; k < n; k++)
+            for (int k = 0; k < vertices.Length; k++)
             {
-                for (int l = k + 1; l < n; l++)
+                for (int l = 0; l < vertices.Length; l++)
                 {
-                    if (graph[k, l] != int.MaxValue)
+                    if (k == l || vertices[k].Vertices.Any(v => v == vertices[l]))
                         continue;
 
                     count++;
-
                     if (random.Next(0, count) == 0)
                     {
-                        found = true;
                         i = k;
                         j = l;
+                        found = true;
                     }
                 }
             }
 
             if (found)
-                graph[i, j] = graph[j, i] = random.Next(1, maxWeight + 1);
+                vertices[i].AddUnDirectedEdge(vertices[j], random.Next(1, maxWeight + 1));
         }
 
-        private static bool IsSpanningTree(int[,] graph, int n)
+        private static bool IsSpanningTree(Vertex[] vertices)
         {
-            bool[,] paths = new bool[n, n];
-            for(int i = 0; i < n; i++)
-            {
-                for (int j = 0; j < n; j++)
-                    paths[i, j] = (graph[i, j] != int.MaxValue);
-            }
+            foreach (Vertex v in vertices)
+                v.Reset();
 
-            bool[] visited = DepthFirstSearch.Run(paths, 0);
-            return visited.All(b => b);
-        }
+            DepthFirstSearch.Run(vertices[0]);
 
-        private static int Length(int[,] spanningTree, int n)
-        {
-            int length = 0;
-
-            for(int i = 0; i < n; i++)
-            {
-                for (int j = i + 1; j < n; j++)
-                {
-                    int weight = spanningTree[i, j];
-                    if(weight != int.MaxValue)
-                        length += weight;
-                }
-            }
-
-            return length;
+            return vertices.All(v => v.Color == Color.Black);
         }
     }
 }
