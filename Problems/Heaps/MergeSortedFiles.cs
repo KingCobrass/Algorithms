@@ -31,13 +31,7 @@ namespace Problems.Heaps
                     Array.Sort(data[j]);
                 }
 
-                int[][] results = new int[functions.Length][];
-
-                for(int j = 0; j < functions.Length; j++)
-                {
-                    results[j] = functions[j](data);
-                    Assert.IsTrue(ArrayUtilities.AreEqual(results[0], results[j]));
-                }
+                Tests.TestFunctions(data, functions);
             }
         }
 

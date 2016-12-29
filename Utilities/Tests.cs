@@ -16,6 +16,17 @@ namespace Utilities
             }
         }
 
+        public static void TestFunctions<T, U>(T p1, params Func<T, U[]>[] functions)
+        {
+            U[][] results = new U[functions.Length][];
+
+            for (int i = 0; i < results.Length; i++)
+            {
+                results[i] = functions[i](p1);
+                Assert.IsTrue(ArrayUtilities.AreEqual(results[0], results[i]));
+            }
+        }
+
         public static void TestFunctions<T, U, V>(T p1, U p2, params Func<T, U, V>[] functions)
         {
             V[] results = new V[functions.Length];
@@ -24,6 +35,17 @@ namespace Utilities
             {
                 results[i] = functions[i](p1, p2);
                 Assert.AreEqual(results[0], results[i]);
+            }
+        }
+
+        public static void TestFunctions<T, U, V>(T p1, U p2, params Func<T, U, V[]>[] functions)
+        {
+            V[][] results = new V[functions.Length][];
+
+            for (int i = 0; i < results.Length; i++)
+            {
+                results[i] = functions[i](p1, p2);
+                Assert.IsTrue(ArrayUtilities.AreEqual(results[0], results[i]));
             }
         }
 

@@ -30,13 +30,7 @@ namespace Problems.Sorting
                     Array.Sort(a);
                     Array.Sort(b);
 
-                    int[][] results = new int[functions.Length][];
-
-                    for (int k = 0; k < functions.Length; k++)
-                    {
-                        results[k] = functions[k](a, b);
-                        Assert.IsTrue(ArrayUtilities.AreEqual(results[0], results[k]));
-                    }
+                    Tests.TestFunctions(a, b, functions);
                 }
             }
         }

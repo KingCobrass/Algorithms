@@ -27,11 +27,7 @@ namespace Problems.BinarySearchTrees
 
                 for(int k = 0; k <= 10; k++)
                 {
-                    for (int j = 0; j < functions.Length; j++)
-                    {
-                        results[j] = functions[j](root, k);
-                        Assert.IsTrue(ArrayUtilities.AreEqual(results[0], results[j]));
-                    }
+                    Tests.TestFunctions(root, k, functions);
                 }
             }
         }
